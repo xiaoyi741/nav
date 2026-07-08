@@ -6,30 +6,30 @@ on:
       - master
       - main
       - own
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: false
+        uses: actions/checkout@v4
       - name: Set Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20.x
       - name: Install
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install
-      # dist/404.html: gh-pages history mode
+        run: yarn install --frozen-lockfile
       - name: Build
         run: |
           npm run build-gh-pages
           cp dist/index.html dist/404.html
-      - name: Deploy
+      - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: dist
