@@ -1,0 +1,12 @@
+<div class="calendar family citems">
+  <div class="ctop" [style.background]="data['topColor']">
+    {{ date }}
+  </div>
+  <div class="box" [style.background]="data['bgColor']">
+    <div class="cday">{{ day }}</div>
+    <div class="cdate">
+      <span class="mr-1.5">第{{ dayOfYear }}天</span>
+      <span>{{ week }}</span>
+    </div>
+  </div>
+</div>

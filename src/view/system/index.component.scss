@@ -1,0 +1,18 @@
+.system-layout {
+  min-height: 100vh;
+  .content {
+    padding: 30px;
+    background-color: #fff;
+  }
+  .sidebar {
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+  }
+  .inner-layout {
+    margin-left: 170px;
+  }
+}
