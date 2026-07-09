@@ -22,10 +22,16 @@ import ShortcutComponent from '../view/shortcut/index.component'
 import CollectComponent from '../view/system/collect/index.component'
 import WebpComponent from '../view/app/default/app.component'
 import VipAuthComponent from '../view/system/vip-auth/index.component'
+import DetailComponent from '../view/detail/index.component'
 import { isSelfDevelop } from 'src/utils/util'
 import { getDefaultTheme } from 'src/utils'
 
 export const routes: Routes = [
+  {
+    path: 'detail/:id',
+    component: DetailComponent,
+    data: {},
+  },
   {
     path: 'sim',
     component: SimComponent,
