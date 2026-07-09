@@ -40,6 +40,13 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  goDetail(e: Event) {
+    const id = this.dataSource.id
+    if (id) {
+      this.jumpService.goUrl(e, '@/detail/' + id)
+    }
+  }
+
   async copyUrl(e: Event, type: number) {
     const w = this.dataSource
     const { origin, hash, pathname } = window.location
