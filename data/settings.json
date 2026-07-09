@@ -1,1 +1,14 @@
-{}
+{
+  "theme": "Side",
+  "appTheme": "Side",
+  "title": "发现导航",
+  "description": "发现导航是一个轻量级免费且强大的导航网站",
+  "keywords": "免费导航,开源导航",
+  "language": "zh-CN",
+  "loading": "",
+  "openSEO": true,
+  "footerContent": "",
+  "headerContent": "",
+  "showGithub": true,
+  "favicon": ""
+}
