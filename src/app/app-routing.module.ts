@@ -138,7 +138,7 @@ if (!isSelfDevelop) {
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      useHash: config.hashMode,
+      useHash: false,
     }),
   ],
   exports: [RouterModule],
