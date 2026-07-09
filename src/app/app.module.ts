@@ -99,6 +99,7 @@ import SideComponent from '../view/side/index.component'
 import ShortcutComponent from '../view/shortcut/index.component'
 import WebpComponent from '../view/app/default/app.component'
 import VipAuthComponent from '../view/system/vip-auth/index.component'
+import DetailComponent from '../view/detail/index.component'
 
 import { SafeHtmlPipe } from 'src/pipe/safeHtml.pipe'
 import { CommonService } from 'src/services/common'
@@ -151,6 +152,7 @@ const icons: IconDefinition[] = [
     SystemComponentComponent,
     WebpComponent,
     VipAuthComponent,
+    DetailComponent,
     SwiperComponent,
     FixbarComponent,
     FooterComponent,
