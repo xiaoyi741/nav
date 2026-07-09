@@ -106,4 +106,12 @@ export default class DetailComponent implements OnInit, OnDestroy {
       this.jumpService.goUrl(null, url)
     }
   }
+
+  trackById(index: number, item: any) {
+    return item.id
+  }
+
+  toNumber(val: any): number {
+    return Number(val)
+  }
 }
