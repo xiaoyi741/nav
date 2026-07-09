@@ -1,0 +1,81 @@
+<div class="detail-page">
+  <!-- 加载状态 -->
+  <div class="loading-container" *ngIf="loading">
+    <nz-spin nzSize="large"></nz-spin>
+    <p>加载中...</p>
+  </div>
+
+  <!-- 未找到 -->
+  <div class="not-found" *ngIf="notFound">
+    <nz-empty [nzNotFoundContent]="'工具未找到'"></nz-empty>
+    <button nz-button nzType="primary" (click)="goBack()">返回首页</button>
+  </div>
+
+  <!-- 工具详情 -->
+  <div class="detail-content" *ngIf="tool && !loading">
+    <!-- 返回按钮 -->
+    <div class="back-bar">
+      <button nz-button nzType="text" (click)="goBack()">
+        <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+        返回
+      </button>
+    </div>
+
+    <!-- 工具头部信息 -->
+    <div class="tool-header">
+      <div class="tool-icon">
+        <img [src]="tool.icon || 'assets/favicon.png'" [alt]="tool.name" 
+             (error)="tool.icon = 'assets/favicon.png'" />
+      </div>
+      <div class="tool-info">
+        <h1 class="tool-name" [innerHTML]="tool.name"></h1>
+        <p class="tool-desc" [innerHTML]="tool.desc"></p>
+        <div class="tool-actions">
+          <a nz-button nzType="primary" nzSize="large" 
+             [href]="tool.url" target="_blank" rel="nofollow noopener"
+             class="visit-btn">
+            <span nz-icon nzType="link" nzTheme="outline"></span>
+            访问官网
+          </a>
+          <button nz-button nzSize="large" (click)="goBack()">
+            返回导航
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 工具详情描述 -->
+    <div class="tool-detail-section" *ngIf="tool.desc">
+      <h2>工具介绍</h2>
+      <div class="detail-desc" [innerHTML]="tool.desc"></div>
+    </div>
+
+    <!-- 工具信息 -->
+    <div class="tool-meta">
+      <div class="meta-item" *ngIf="tool.url">
+        <span class="meta-label">官网地址</span>
+        <a [href]="tool.url" target="_blank" rel="nofollow noopener" class="meta-value">
+          {{ tool.url }}
+        </a>
+      </div>
+    </div>
+
+    <!-- 推荐工具 -->
+    <div class="related-section" *ngIf="relatedTools.length > 0">
+      <h2>推荐工具</h2>
+      <div class="related-list">
+        <div class="related-item" *ngFor="let item of relatedTools"
+             (click)="findTool(Number(item.id))">
+          <div class="related-icon">
+            <img [src]="item.icon || 'assets/favicon.png'" [alt]="item.name"
+                 (error)="item.icon = 'assets/favicon.png'" />
+          </div>
+          <div class="related-info">
+            <div class="related-name" [innerHTML]="item.name"></div>
+            <div class="related-desc" [innerHTML]="item.desc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
