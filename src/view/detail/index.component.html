@@ -45,7 +45,11 @@
     </div>
 
     <!-- 工具详情描述 -->
-    <div class="tool-detail-section" *ngIf="tool.desc">
+    <div class="tool-detail-section" *ngIf="tool.richDesc">
+      <h2>详细介绍</h2>
+      <div class="detail-desc" [innerHTML]="tool.richDesc | safeHtml"></div>
+    </div>
+    <div class="tool-detail-section" *ngIf="!tool.richDesc && tool.desc">
       <h2>工具介绍</h2>
       <div class="detail-desc" [innerHTML]="tool.desc"></div>
     </div>
