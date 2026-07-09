@@ -64,8 +64,8 @@
     <div class="related-section" *ngIf="relatedTools.length > 0">
       <h2>推荐工具</h2>
       <div class="related-list">
-        <div class="related-item" *ngFor="let item of relatedTools"
-             (click)="findTool(Number(item.id))">
+        <div class="related-item" *ngFor="let item of relatedTools; trackBy: trackById"
+             (click)="findTool(toNumber(item.id))">
           <div class="related-icon">
             <img [src]="item.icon || 'assets/favicon.png'" [alt]="item.name"
                  (error)="item.icon = 'assets/favicon.png'" />
