@@ -109,9 +109,9 @@ tools.forEach(function(t) {
   html += '<meta name="twitter:image" content="' + imgUrl + '" />\n'
   // JSON-LD
   html += '<script type="application/ld+json">' + ldStr + '</script>\n'
-  // 重定向到 SPA (通过 meta refresh 和 JS)
-  html += '<meta http-equiv="refresh" content="0;url=/" />\n'
-  html += '<script>window.location.href="/";</script>\n'
+  // 重定向到 SPA
+  html += '<meta http-equiv="refresh" content="0;url=/nav/" />\n'
+  html += '<script>window.location.href="/nav/";</script>\n'
   html += '</head>\n<body>\n'
   // 页面内容（给搜索引擎爬虫）
   html += '<h1>' + name + '</h1>\n'
