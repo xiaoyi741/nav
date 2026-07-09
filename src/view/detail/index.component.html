@@ -1,85 +1,129 @@
-<div class="detail-page">
-  <!-- 加载状态 -->
-  <div class="loading-container" *ngIf="loading">
-    <nz-spin nzSize="large"></nz-spin>
-    <p>加载中...</p>
-  </div>
+<!-- JSON-LD -->
+<script *ngIf="jsonLd" type="application/ld+json">{{ jsonLd }}</script>
 
-  <!-- 未找到 -->
-  <div class="not-found" *ngIf="notFound">
-    <nz-empty [nzNotFoundContent]="'工具未找到'"></nz-empty>
-    <button nz-button nzType="primary" (click)="goBack()">返回首页</button>
-  </div>
-
-  <!-- 工具详情 -->
-  <div class="detail-content" *ngIf="tool && !loading">
-    <!-- 返回按钮 -->
-    <div class="back-bar">
-      <button nz-button nzType="text" (click)="goBack()">
-        <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
-        返回
-      </button>
-    </div>
-
-    <!-- 工具头部信息 -->
-    <div class="tool-header">
-      <div class="tool-icon">
-        <img [src]="tool.icon || 'assets/favicon.png'" [alt]="tool.name" 
-             (error)="tool.icon = 'assets/favicon.png'" />
+<nz-layout class="layout">
+  <nz-layout>
+    <!-- 左侧导航栏 -->
+    <nz-sider
+      class="sider-compnent"
+      nzCollapsible
+      [(nzCollapsed)]="isCollapsed"
+      [nzTrigger]="null"
+    >
+      <div class="logo dark-bg" (click)="handleCollapsed()">
+        <img [src]="commonService.settings.favicon || 'assets/logo.png'" class="logo-img" />
+        <span class="web-title" *ngIf="!isCollapsed">{{
+          commonService.settings.sideTitle || commonService.title
+        }}</span>
       </div>
-      <div class="tool-info">
-        <h1 class="tool-name" [innerHTML]="tool.name"></h1>
-        <p class="tool-desc" [innerHTML]="tool.desc"></p>
-        <div class="tool-actions">
-          <a nz-button nzType="primary" nzSize="large" 
-             [href]="tool.url" target="_blank" rel="nofollow noopener"
-             class="visit-btn">
-            <span nz-icon nzType="link" nzTheme="outline"></span>
-            访问官网
-          </a>
-          <button nz-button nzSize="large" (click)="goBack()">
-            返回导航
-          </button>
-        </div>
-      </div>
-    </div>
 
-    <!-- 工具详情描述 -->
-    <div class="tool-detail-section" *ngIf="tool['richDesc']">
-      <h2>详细介绍</h2>
-      <div class="detail-desc" [innerHTML]="tool['richDesc'] | safeHtml"></div>
-    </div>
-    <div class="tool-detail-section" *ngIf="!tool['richDesc'] && tool.desc">
-      <h2>工具介绍</h2>
-      <div class="detail-desc" [innerHTML]="tool.desc"></div>
-    </div>
+      <ul nz-menu nzMode="inline" class="sider dark-scrollbar dark-bg">
+        <li
+          nz-submenu
+          *ngFor="let item of websiteList; index as pageIdx; trackBy: commonService.trackByItem"
+          (nzOpenChange)="openMenu(item, pageIdx)"
+          [nzTitle]="titleTpl"
+          [nzOpen]="item['collapsed']"
+        >
+          <ng-template #titleTpl>
+            <img *ngIf="item.icon" class="sideicon" [src]="item.icon" />
+            <span class="menu-title ellipsis">{{
+              isCollapsed && item.icon ? '' : isCollapsed && !item.icon ? item.title.slice(0, 4) : item.title
+            }}</span>
+          </ng-template>
+          <ul>
+            <li
+              nz-menu-item
+              *ngFor="let el of item.nav; let idIdx = index; trackBy: commonService.trackByItem"
+              (click)="commonService.handleSidebarNav(idIdx, pageIdx)"
+            >
+              <img *ngIf="el.icon" class="sideicon fixicon" [src]="el.icon" />
+              <span class="ellipsis">{{ el.title }}</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
 
-    <!-- 工具信息 -->
-    <div class="tool-meta">
-      <div class="meta-item" *ngIf="tool.url">
-        <span class="meta-label">官网地址</span>
-        <a [href]="tool.url" target="_blank" rel="nofollow noopener" class="meta-value">
-          {{ tool.url }}
-        </a>
-      </div>
-    </div>
+    <!-- 右侧详情内容 -->
+    <nz-layout class="inner-layout">
+      <nz-content class="content" id="content">
+        <div class="detail-container" *ngIf="!loading && !notFound && tool">
+          <!-- JSON-LD -->
+          <script *ngIf="jsonLd" type="application/ld+json">{{ jsonLd }}</script>
 
-    <!-- 推荐工具 -->
-    <div class="related-section" *ngIf="relatedTools.length > 0">
-      <h2>推荐工具</h2>
-      <div class="related-list">
-        <div class="related-item" *ngFor="let item of relatedTools; trackBy: trackById"
-             (click)="findTool(toNumber(item.id))">
-          <div class="related-icon">
-            <img [src]="item.icon || 'assets/favicon.png'" [alt]="item.name"
-                 (error)="item.icon = 'assets/favicon.png'" />
+          <!-- 面包屑导航 -->
+          <div class="breadcrumb-bar">
+            <a href="/nav/" class="breadcrumb-link">首页</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">{{ tool.name }}</span>
           </div>
-          <div class="related-info">
-            <div class="related-name" [innerHTML]="item.name"></div>
-            <div class="related-desc" [innerHTML]="item.desc"></div>
+
+          <!-- 工具头部 -->
+          <div class="tool-header">
+            <div class="tool-icon">
+              <img [src]="tool.icon || 'assets/favicon.png'" [alt]="tool.name" />
+            </div>
+            <div class="tool-info-box">
+              <h1 class="tool-name" [innerHTML]="tool.name"></h1>
+              <p class="tool-desc" [innerHTML]="tool.desc"></p>
+              <div class="tool-actions">
+                <a nz-button nzType="primary" nzSize="large" [href]="tool.url" target="_blank" rel="nofollow noopener" class="visit-btn">
+                  <span nz-icon nzType="link" nzTheme="outline"></span>
+                  访问官网
+                </a>
+                <a nz-button nzSize="large" href="/nav/">返回导航</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 详细介绍 -->
+          <div class="tool-section" *ngIf="tool['richDesc']">
+            <h2>详细介绍</h2>
+            <div class="rich-content" [innerHTML]="tool['richDesc'] | safeHtml"></div>
+          </div>
+
+          <!-- 官网地址 -->
+          <div class="tool-section url-section" *ngIf="tool.url">
+            <h2>官网地址</h2>
+            <a [href]="tool.url" target="_blank" rel="nofollow noopener" class="external-link">{{ tool.url }}</a>
+          </div>
+
+          <!-- 推荐工具 -->
+          <div class="related-section" *ngIf="relatedTools.length > 0">
+            <h2>推荐工具</h2>
+            <div nz-row [nzGutter]="[16, 16]">
+              <div
+                *ngFor="let item of relatedTools; trackBy: trackById"
+                class="gutter-row"
+                nz-col
+                [nzSpan]="6"
+                [nzXs]="12"
+                [nzSm]="12"
+                [nzMd]="8"
+                [nzLg]="6"
+                [nzXXl]="4"
+              >
+                <div class="related-card" (click)="findTool(toNumber(item.id))">
+                  <div class="related-icon">
+                    <img [src]="item.icon || 'assets/favicon.png'" [alt]="item.name" />
+                  </div>
+                  <div class="related-name" [innerHTML]="item.name"></div>
+                  <div class="related-desc" [innerHTML]="item.desc"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+        <!-- 未找到 -->
+        <div class="not-found" *ngIf="notFound">
+          <nz-empty [nzNotFoundContent]="'工具未找到'"></nz-empty>
+          <a nz-button nzType="primary" href="/nav/">返回首页</a>
+        </div>
+      </nz-content>
+
+      <app-footer className="side-footer" [content]="commonService.settings.sideFooterHTML" />
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
