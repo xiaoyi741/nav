@@ -1,5 +1,5 @@
 <img
-  *ngIf="src; else noSrc"
+  *ngIf="src && !imgError; else noSrc"
   [src]="src"
   class="icon common-icon"
   [ngStyle]="{
@@ -11,6 +11,7 @@
   }"
   draggable="false"
   loading="lazy"
+  (error)="onImgError()"
   [alt]="name ? name[0] : ''"
 />
 
