@@ -4,49 +4,8 @@
 
 一个基于 Angular 18 + NgZorro Ant Design 的 AI 导航网站。支持 6 种主题视图（Light/Super/Sim/Side/Shortcut/App），数据通过构建时静态 JSON 导入 + GitHub API 写回的方式管理。
 
-## 项目结构
-
-```
-nav-local/
-├── src/
-│   ├── app/              # 根模块、路由
-│   │   ├── app.module.ts         # 注册所有组件
-│   │   ├── app-routing.module.ts # 路由配置
-│   │   ├── app.component.*       # 根组件（含 fetchIng 加载状态）
-│   ├── components/       # 公共组件
-│   │   ├── navbar/               # 全局顶部菜单条（9项）
-│   │   ├── fixbar/               # 右侧浮动工具栏
-│   │   ├── card/                 # 网站卡片
-│   │   ├── footer/               # 页脚
-│   │   ├── search-engine/        # 搜索引擎
-│   │   └── ...
-│   ├── view/             # 页面组件
-│   │   ├── light/                # Light 主题主页
-│   │   ├── super/                # Super 主题主页
-│   │   ├── sim/                  # Sim 主题主页
-│   │   ├── side/                 # Side 主题主页
-│   │   ├── shortcut/             # Shortcut 主题主页
-│   │   ├── app/default/          # App 主题主页
-│   │   ├── skills/               # Skills 功能
-│   │   │   ├── list/             # Skills 列表页
-│   │   │   └── detail/           # Skills 详情页
-│   │   ├── detail/               # 网站详情页
-│   │   └── system/               # 后台管理
-│   │       ├── web/              # 网址管理
-│   │       ├── setting/          # 设置
-│   │       ├── skills/           # Skills 管理
-│   │       └── ...
-│   ├── store/index.ts    # 数据仓库（静态导入 JSON）
-│   ├── types/            # TypeScript 类型
-│   │   └── skills.ts     # ISkill 类型
-│   └── server.mjs        # Express 服务端（API + 静态文件）
-├── data/                 # 数据文件（JSON，构建时静态导入）
-│   ├── db.json           # 网站导航数据（9个一级分类）
-│   ├── skills.json       # Skills 数据
-│   └── ...
-└── scripts/              # 工具脚本
-    └── scrape_skills.mjs # Skills 爬虫
-```
+**线上地址：** https://xiaoyi741.github.io/nav/
+**仓库地址：** https://github.com/xiaoyi741/nav
 
 ## 部署模式
 
@@ -60,72 +19,139 @@ nav-local/
 ## 数据流
 
 ```
-data/*.json ──模块导入──→ src/store/index.ts (websiteList / skillsList)
+data/*.json ──模块导入──→ src/store/index.ts
                                │
                     ┌──────────┼──────────┐
                     ▼          ▼          ▼
-               各主题视图    Skills页面   后台管理面板
+               各主题视图    独立页面     后台管理面板
                                           │
                                           ▼
                                   updateFileContent()
                                   → GitHub API / Express API
 ```
 
+## 项目结构
+
+```
+nav-local/
+├── .atomcode/project.md      # 项目记忆文档
+├── data/                     # 数据文件（构建时静态导入）
+│   ├── db.json               # 网站导航（AI导航 + 14个子分类）
+│   ├── skills.json           # Skills 数据（8169条）
+│   ├── prompts.json          # 提示词数据（864条）
+│   ├── news.json             # 资讯数据（400条）
+│   ├── mcp.json              # MCP 数据（480条）
+│   ├── learning.json         # 学习资源数据（172条）
+│   ├── knowledge.json        # 知识库内容
+│   └── ...
+├── src/
+│   ├── app/                  # 根模块、路由
+│   │   ├── app.module.ts     # 注册所有组件
+│   │   ├── app-routing.module.ts  # 路由配置
+│   │   └── app.component.*   # 根组件
+│   ├── components/           # 公共组件
+│   │   └── navbar/           # 全局顶部菜单条（9项）
+│   ├── view/                 # 页面组件
+│   │   ├── light/super/sim/side/shortcut/app/  # 6种主题视图
+│   │   ├── skills/           # Skills 列表/详情
+│   │   ├── prompts/          # 提示词 列表/详情
+│   │   ├── news/             # 资讯 列表/详情
+│   │   ├── mcp/              # MCP 列表/详情
+│   │   ├── learning/         # 学习资源 列表/详情
+│   │   ├── knowledge/        # 知识库页面
+│   │   ├── detail/           # 网站详情页
+│   │   └── system/           # 后台管理
+│   │       ├── web/          # 网址管理
+│   │       ├── skills/       # Skills 管理
+│   │       ├── prompts/      # 提示词管理
+│   │       ├── news/         # 资讯管理
+│   │       ├── mcp/          # MCP 管理
+│   │       └── ...
+│   ├── store/index.ts        # 数据仓库
+│   ├── types/                # TypeScript 类型
+│   │   ├── skills.ts
+│   │   ├── prompts.ts
+│   │   ├── news.ts
+│   │   ├── mcp.ts
+│   │   └── learning.ts
+│   └── server.mjs            # Express 服务端
+└── scripts/                  # 爬虫脚本
+    ├── scrape_skills.mjs
+    ├── scrape_prompts.mjs
+    ├── scrape_news.mjs
+    ├── scrape_mcp.mjs
+    ├── scrape_learning.mjs
+    ├── scrape_list.mjs
+    ├── backfill_names.mjs
+    └── backfill_skills.mjs
+```
+
 ## 顶部菜单条 (navbar)
 
 9 个菜单项定义在 `src/components/navbar/navbar.component.ts`：
 
-| 索引 | 名称 | 类型 |
-|------|------|------|
-| 0 | AI导航 | page（内容视图分类） |
-| 1 | AI工具 | page |
-| 2 | AI知识库 | page |
-| 3 | AI提示词 | page |
-| 4 | MCP | page |
-| 5 | Skills | route（独立路由 /skills） |
-| 6 | AI学习资源 | page |
-| 7 | AI资讯 | page |
-| 8 | 开源排行榜 | page |
+| 索引 | 名称 | 类型 | 路由 |
+|------|------|------|------|
+| 0 | AI导航 | page | 主题视图分类 |
+| 1 | AI工具 | page | 空壳待开发 |
+| 2 | AI知识库 | route | `/knowledge` |
+| 3 | AI提示词 | route | `/prompts` |
+| 4 | MCP | route | `/mcp` |
+| 5 | Skills | route | `/skills` |
+| 6 | AI学习资源 | route | `/learning` |
+| 7 | AI资讯 | route | `/news` |
+| 8 | 开源排行榜 | page | 空壳待开发 |
 
 - `page` 类型：带 ?page=N 参数跳转到当前主题视图
 - `route` 类型：直接跳转到独立路由
 
-## Skills 功能
+## 各功能模块
 
-### 路由
-- `/skills` → Skills 列表页（搜索 + 标签筛选 + 分页）
-- `/skills/:id` → Skills 详情页（名称、描述、标签、安装命令、SKILL.md 内容、相关推荐）
-- `/system/skills` → 后台管理（增删改，通过 updateFileContent 写回 data/skills.json）
+### 1. Skills（8169条）
+- 路由：`/skills` / `/skills/:id` / `/system/skills`
+- 数据：`data/skills.json`
+- 爬虫：`scripts/scrape_skills.mjs` / `scrape_all_skills.mjs` / `scrape_list.mjs` / `backfill_names.mjs` / `backfill_skills.mjs`
+- 标签：效率工具、软件开发、数据与分析、文档处理等
 
-### 数据字段 (ISkill)
-```typescript
-interface ISkill {
-  id: string | number     // 大数字 ID，需用字符串避免精度丢失！
-  name: string            // skill 名称
-  description: string     // 中文描述
-  content?: string        // SKILL.md 完整内容
-  tags: string[]          // 标签
-  githubUrl?: string      // GitHub 仓库链接
-  installCmd?: string     // 安装命令
-  relatedIds?: (string|number)[]  // 相关推荐
-  createdAt: string/number
-  updatedAt?: string/number
-  ownVisible?: boolean
-}
-```
+### 2. AI提示词（864条）
+- 路由：`/prompts` / `/prompts/:id` / `/system/prompts`
+- 数据：`data/prompts.json`
+- 爬虫：`scripts/scrape_prompts.mjs`
+- 标签：学习成长、写作、技术、商业、教育学习等
 
-### 爬虫 (scripts/scrape_skills.mjs)
-- 从 `ai.codefather.cn` 抓取 Skills 数据
-- 列表页：`/skills?current=N`（每页 20 条，共 341 页 ≈ 6820 个 skill）
-- 详情页：`/skills/{id}`（提取 SKILL.md 内容）
-- **注意**：ID 是超过 `Number.MAX_SAFE_INTEGER` 的大数字，必须存为**字符串**
-- 详情页内容提取策略：在 `Complete terms in LICENSE.txt` 之后开始，到 `🔥热门工具` 之前结束
+### 3. AI资讯（400条）
+- 路由：`/news` / `/news/:id` / `/system/news`
+- 数据：`data/news.json`
+- 爬虫：`scripts/scrape_news.mjs`
 
-## 已知问题 / 待办
+### 4. MCP（480条）
+- 路由：`/mcp` / `/mcp/:id` / `/system/mcp`
+- 数据：`data/mcp.json`
+- 爬虫：`scripts/scrape_mcp.mjs`
+- 标签：开发工具、数据库、云平台、安全等
 
-1. Skills 数据现状：**8169 条**，全部有名称/描述/标签，28 条有完整详情内容
-2. 提示词数据：**864 条**，480 条有完整内容
-3. 资讯数据：**400 条**，398 条有完整内容
-4. MCP 数据：**480 条**，101 条有完整内容
-5. AI工具、AI知识库、AI学习资源、开源排行榜 页面待开发
-6. 详情内容补抓：运行 `node scripts/backfill_skills.mjs`、`node scripts/scrape_prompts.mjs`、`node scripts/scrape_news.mjs`、`node scripts/scrape_mcp.mjs`
+### 5. AI学习资源（172条）
+- 路由：`/learning` / `/learning/:id`
+- 数据：`data/learning.json`
+- 爬虫：`scripts/scrape_learning.mjs`
+- 内容：AI 知识百科（机器学习、深度学习、AIGC、LLM等）
+
+### 6. AI知识库
+- 路由：`/knowledge`
+- 数据：`data/knowledge.json`
+- 内容：Vibe Coding 教程、AI 工具测评等（单页内容）
+
+## 爬虫注意事项
+
+- **ID 精度**：所有 ID 都是超过 `Number.MAX_SAFE_INTEGER` 的大数字，必须存为**字符串**
+- **内容提取策略**：详情页内容在 `Complete terms in LICENSE.txt` 之后开始，到 `🔥热门工具` 之前结束
+- **网络代理**：部分环境需要配置 SOCKS5 代理 `git config --global http.proxy socks5://127.0.0.1:1080`
+
+## 已知问题
+
+1. Skills 有 8169 条 ID，但仅 28 条有完整 SKILL.md 内容
+2. 提示词有 864 条，仅 480 条有完整内容
+3. 资讯有 400 条，398 条有完整内容
+4. MCP 有 480 条，仅 101 条有完整内容
+5. AI工具、开源排行榜 页面待开发
+6. 详情内容补抓：运行各模块的 `scrape_*.mjs` 脚本
