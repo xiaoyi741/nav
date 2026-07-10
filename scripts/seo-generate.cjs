@@ -8,6 +8,7 @@ const path = require('path')
 const data = JSON.parse(fs.readFileSync('data/db.json', 'utf-8'))
 const distDir = 'dist'
 const baseUrl = 'https://xiaoyi741.github.io/nav'
+const settingsTitle = 'YiGo-Ai导航'
 
 // 收集所有工具
 const tools = []
@@ -49,11 +50,19 @@ fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemap, 'utf-8')
 console.log('✅ sitemap.xml 已生成 (' + (tools.length + 1) + ' 个URL)')
 
 // ============================================================
-// 2. 预渲染详情页静态 HTML
+// 2. 预渲染详情页（包含SPA脚本让Angular接管）
 // ============================================================
 var detailDir = path.join(distDir, 'detail')
 if (!fs.existsSync(detailDir)) {
   fs.mkdirSync(detailDir, { recursive: true })
+}
+
+// 读取 SPA 的 index.html 模板
+var spaHtml = ''
+try {
+  spaHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8')
+} catch(e) {
+  spaHtml = '<!DOCTYPE html><html><head><meta charset="utf-8"><base href="/nav/"></head><body></body></html>'
 }
 
 function escapeHtml(str) {
@@ -68,8 +77,6 @@ var count = 0
 tools.forEach(function(t) {
   var name = escapeHtml(t.name || '')
   var desc = escapeHtml(stripTags(t.desc || ''))
-  var richDesc = (t['richDesc'] || '').replace(/href="\//g, 'href="' + baseUrl + '/')
-  var richText = stripTags(t['richDesc'] || '').substring(0, 500)
   var pageTitle = name + ' - YiGo-Ai导航'
   var pageUrl = baseUrl + '/detail/' + t.id
   var imgUrl = escapeHtml(t.icon || baseUrl + '/assets/logo.png')
@@ -80,47 +87,31 @@ tools.forEach(function(t) {
     '@type': 'WebApplication',
     name: t.name,
     url: t.url || pageUrl,
-    description: richText || desc,
+    description: stripTags(t['richDesc'] || t.desc || '').substring(0, 500),
     applicationCategory: 'Multimedia',
-    operatingSystem: 'All',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'CNY' },
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl }
   }
   var ldStr = JSON.stringify(ld).replace(/</g, '\\u003c')
 
-  // 构建静态 HTML
-  var html = '<!DOCTYPE html>\n<html lang="zh-CN">\n<head>\n'
-  html += '<meta charset="utf-8" />\n'
-  html += '<meta name="viewport" content="width=device-width, initial-scale=1" />\n'
-  html += '<title>' + pageTitle + '</title>\n'
-  html += '<meta name="description" content="' + (desc || name + ' AI工具介绍和官网') + '" />\n'
-  html += '<meta name="keywords" content="' + name + ',AI工具,' + name + '官网" />\n'
-  // OG 标签
-  html += '<meta property="og:title" content="' + pageTitle + '" />\n'
-  html += '<meta property="og:description" content="' + (desc || name + ' AI工具介绍') + '" />\n'
-  html += '<meta property="og:image" content="' + imgUrl + '" />\n'
-  html += '<meta property="og:url" content="' + pageUrl + '" />\n'
-  html += '<meta property="og:type" content="website" />\n'
-  html += '<meta property="og:site_name" content="YiGo-Ai导航" />\n'
-  // Twitter Card
-  html += '<meta name="twitter:card" content="summary_large_image" />\n'
-  html += '<meta name="twitter:title" content="' + pageTitle + '" />\n'
-  html += '<meta name="twitter:description" content="' + (desc || name + ' AI工具介绍') + '" />\n'
-  html += '<meta name="twitter:image" content="' + imgUrl + '" />\n'
-  // JSON-LD
-  html += '<script type="application/ld+json">' + ldStr + '</script>\n'
-  // 提供导航链接（不自动跳转，让 SPA 接管）
-  html += '<noscript><meta http-equiv="refresh" content="0;url=/nav/"></noscript>\n'
-  html += '<style>body{font-family:sans-serif;padding:20px;max-width:800px;margin:0 auto;line-height:1.6}</style>\n'
-  html += '</head>\n<body>\n'
-  // 页面内容（给搜索引擎爬虫）
-  html += '<h1>' + name + '</h1>\n'
-  html += '<p>' + desc + '</p>\n'
-  if (t['richDesc']) {
-    html += '<div>' + richDesc.substring(0, 2000) + '</div>\n'
-  }
-  html += '<a href="' + escapeHtml(t.url || '') + '" rel="nofollow">访问官网</a>\n'
-  html += '</body>\n</html>'
+  // 基于 SPA 模板生成预渲染页面
+  var html = spaHtml
+    .replace('<title>' + escapeHtml(settingsTitle) + '</title>', '<title>' + pageTitle + '</title>')
+    .replace(/<meta name="description"[^>]*>/g, '<meta name="description" content="' + (desc || name + ' AI工具介绍和官网') + '" />')
+    .replace('</head>',
+      '<meta property="og:title" content="' + pageTitle + '" />\n' +
+      '<meta property="og:description" content="' + (desc || name + ' AI工具介绍') + '" />\n' +
+      '<meta property="og:image" content="' + imgUrl + '" />\n' +
+      '<meta property="og:url" content="' + pageUrl + '" />\n' +
+      '<meta property="og:type" content="website" />\n' +
+      '<meta property="og:site_name" content="YiGo-Ai导航" />\n' +
+      '<meta name="twitter:card" content="summary_large_image" />\n' +
+      '<meta name="twitter:title" content="' + pageTitle + '" />\n' +
+      '<meta name="twitter:description" content="' + (desc || name + ' AI工具介绍') + '" />\n' +
+      '<meta name="twitter:image" content="' + imgUrl + '" />\n' +
+      '<script type="application/ld+json">' + ldStr + '</script>\n' +
+    '</head>'
+  )
 
   // 写入文件
   var pageDir = path.join(detailDir, String(t.id))
