@@ -162,6 +162,10 @@ export default class DetailComponent implements OnInit, OnDestroy {
     window.history.back()
   }
 
+  goCategory(pageIdx: number, idIdx: number) {
+    window.location.href = '/nav/?page=' + pageIdx + '&id=' + idIdx
+  }
+
   goExternal(url: string | undefined | null) {
     if (url) {
       this.jumpService.goUrl(null, url)
