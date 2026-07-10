@@ -1,0 +1,69 @@
+{
+  "project": "YiGo-Ai导航",
+  "type": "AI工具导航网站",
+  "url": "https://xiaoyi741.github.io/nav/",
+  "github": "https://github.com/xiaoyi741/nav",
+  "tech_stack": ["Angular 18", "TypeScript", "NG-ZORRO", "Tailwind CSS", "GitHub Pages"],
+  "features": {
+    "theme": "Side（侧边栏布局）",
+    "detail_page": true,
+    "admin_backend": true,
+    "seo_optimized": true
+  },
+  "data": {
+    "total_tools": 1789,
+    "total_categories": 14,
+    "real_url_rate": "93%",
+    "rich_desc_rate": "72%",
+    "categories": [
+      "AI写作", "AI图像", "AI视频创作", "AI办公", "AI开发平台",
+      "AI智能体", "AI聊天对话", "AI音频音乐", "AI商业设计",
+      "AI大模型", "AI学习平台", "AI搜索引擎", "AI内容检测", "AI应用"
+    ],
+    "source": "https://ai.codefather.cn/tool"
+  },
+  "seo": {
+    "hash_routing": false,
+    "sitemap": true,
+    "prerendered": 1789,
+    "og_tags": true,
+    "json_ld": true,
+    "twitter_card": true
+  },
+  "scraping_scripts": {
+    "scrape_complete.cjs": "爬取工具列表（14分类，49页面）",
+    "fetch_urls.cjs": "爬取真实URL+详细介绍（按分类分批）",
+    "seo-generate.cjs": "生成sitemap+预渲染静态HTML",
+    "merge_cfid.cjs": "合并codefather ID",
+    "refetch_all.cjs": "补抓缺失数据"
+  },
+  "build_commands": {
+    "start": "npm start",
+    "build": "npm run build-gh-pages",
+    "build_start": "npm run build-start",
+    "seo_generate": "node scripts/seo-generate.cjs"
+  },
+  "configuration": {
+    "settings_file": "data/settings.json",
+    "config_file": "nav.config.yaml",
+    "site_title": "YiGo-Ai导航",
+    "favicon": "assets/favicon.png",
+    "logo": "assets/logo.png",
+    "theme": "Side",
+    "base_href": "/nav/"
+  },
+  "custom_pages": {
+    "detail": {
+      "route": "/detail/:id",
+      "components": ["index.component.ts", "index.component.html", "index.component.scss"],
+      "features": ["工具详情", "JSON-LD", "OG标签", "推荐工具", "侧边栏导航"],
+      "seo_title_format": "{工具名} - YiGo-Ai导航"
+    }
+  },
+  "notes": [
+    "原作者所有引用已清理（xiejiahe, xjh22222228, nav3.cn）",
+    "base-href 使用 /nav/ 因为部署在 GitHub Pages 子路径",
+    "hash路由已禁用（useHash: false），使用 History API 路由",
+    "SEO生成脚本在CI中自动运行（continue-on-error: true）"
+  ]
+}
