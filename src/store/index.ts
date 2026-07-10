@@ -11,6 +11,7 @@ import skillsJson from '../../data/skills.json'
 import promptsJson from '../../data/prompts.json'
 import newsJson from '../../data/news.json'
 import mcpJson from '../../data/mcp.json'
+import knowledgeJson from '../../data/knowledge.json'
 import {
   ISettings,
   ISearchEngineProps,
@@ -63,5 +64,7 @@ export let promptsList: IPrompt[] = isSelfDevelop ? [] : (promptsJson as IPrompt
 export let newsList: INews[] = isSelfDevelop ? [] : (newsJson as INews[])
 
 export let mcpList: IMCP[] = isSelfDevelop ? [] : (mcpJson as IMCP[])
+
+export const knowledgeContent: string = knowledgeJson.content || ''
 
 export let components: IComponentProps[] = isSelfDevelop ? [] : componentJson

@@ -35,6 +35,7 @@ import SystemNewsComponent from '../view/system/news/index.component'
 import McpListComponent from '../view/mcp/list/index.component'
 import McpDetailComponent from '../view/mcp/detail/index.component'
 import SystemMcpComponent from '../view/system/mcp/index.component'
+import KnowledgeComponent from '../view/knowledge/index.component'
 import { isSelfDevelop } from 'src/utils/util'
 import { getDefaultTheme } from 'src/utils'
 
@@ -116,6 +117,11 @@ export const routes: Routes = [
   {
     path: 'mcp/:id',
     component: McpDetailComponent,
+    data: {},
+  },
+  {
+    path: 'knowledge',
+    component: KnowledgeComponent,
     data: {},
   },
   {

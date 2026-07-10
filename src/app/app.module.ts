@@ -114,6 +114,7 @@ import SystemNewsComponent from '../view/system/news/index.component'
 import McpListComponent from '../view/mcp/list/index.component'
 import McpDetailComponent from '../view/mcp/detail/index.component'
 import SystemMcpComponent from '../view/system/mcp/index.component'
+import KnowledgeComponent from '../view/knowledge/index.component'
 
 import { SafeHtmlPipe } from 'src/pipe/safeHtml.pipe'
 import { CommonService } from 'src/services/common'
@@ -179,6 +180,7 @@ const icons: IconDefinition[] = [
     McpListComponent,
     McpDetailComponent,
     SystemMcpComponent,
+    KnowledgeComponent,
     SwiperComponent,
     FixbarComponent,
     FooterComponent,

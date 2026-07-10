@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   navItems: NavItem[] = [
     { label: 'AI导航', page: 0 },
     { label: 'AI工具', page: 1 },
-    { label: 'AI知识库', page: 2 },
+    { label: 'AI知识库', route: '/knowledge' },
     { label: 'AI提示词', route: '/prompts' },
     { label: 'MCP', route: '/mcp' },
     { label: 'Skills', route: '/skills' },

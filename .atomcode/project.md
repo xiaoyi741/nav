@@ -124,6 +124,8 @@ interface ISkill {
 ## 已知问题 / 待办
 
 1. Skills 数据现状：**8169 条**，全部有名称/描述/标签，28 条有完整详情内容
-2. 详情内容补抓：运行 `node scripts/backfill_skills.mjs`（需较长时间，可分批跑）
-3. MCP、AI提示词、AI知识库等分类页面待开发
-4. 搜索功能目前只搜索名称和描述，未搜索 tags
+2. 提示词数据：**864 条**，480 条有完整内容
+3. 资讯数据：**400 条**，398 条有完整内容
+4. MCP 数据：**480 条**，101 条有完整内容
+5. AI工具、AI知识库、AI学习资源、开源排行榜 页面待开发
+6. 详情内容补抓：运行 `node scripts/backfill_skills.mjs`、`node scripts/scrape_prompts.mjs`、`node scripts/scrape_news.mjs`、`node scripts/scrape_mcp.mjs`

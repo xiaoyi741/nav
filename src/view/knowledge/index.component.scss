@@ -1,0 +1,9 @@
+.knowledge-page { max-width: 900px; margin: 0 auto; padding: 24px 16px; min-height: 60vh; }
+.knowledge-container { border: 1px solid #e5e7eb; border-radius: 12px; padding: 28px; }
+.knowledge-header { text-align: center; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #e5e7eb; }
+.knowledge-title { font-size: 26px; font-weight: 700; margin: 0 0 8px; }
+.knowledge-subtitle { font-size: 14px; color: #6e7681; }
+.knowledge-content { font-size: 14px; line-height: 1.8; white-space: pre-wrap; word-break: break-word; color: #333; }
+:host-context(.dark-container) .knowledge-container { border-color: #30363d; }
+:host-context(.dark-container) .knowledge-header { border-color: #30363d; }
+:host-context(.dark-container) .knowledge-content { color: #c9d1d9; }
