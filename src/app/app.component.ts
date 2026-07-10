@@ -1,6 +1,6 @@
 // 开源项目，未经作者同意，不得以抄袭/复制代码/修改源代码版权信息。
-// Copyright @ 2018-present xiejiahe. All rights reserved.
-// See https://github.com/xjh22222228/nav
+// YiGo-Ai导航 仅供学习参考
+// See https://github.com/xiaoyi741/nav
 
 import { Component } from '@angular/core'
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router'
@@ -19,7 +19,7 @@ import Alert from './alert-event'
 import event from 'src/utils/mitt'
 
 @Component({
-  selector: 'app-xiejiahe',
+  selector: 'app-yigo-nav',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
