@@ -15,6 +15,8 @@ export const COMPONENT_PATH = 'data/component.json'
 
 export const SKILLS_PATH = 'data/skills.json'
 
+export const PROMPTS_PATH = 'data/prompts.json'
+
 export const VERSION = navConfig.version
 
 export const STORAGE_KEY_MAP = {

@@ -8,6 +8,7 @@ import tagJson from '../../data/tag.json'
 import internalJson from '../../data/internal.json'
 import componentJson from '../../data/component.json'
 import skillsJson from '../../data/skills.json'
+import promptsJson from '../../data/prompts.json'
 import {
   ISettings,
   ISearchEngineProps,
@@ -18,6 +19,7 @@ import {
   IComponentProps,
 } from 'src/types'
 import { ISkill } from 'src/types/skills'
+import { IPrompt } from 'src/types/prompts'
 import { isSelfDevelop } from 'src/utils/util'
 
 export let settings: ISettings = settingsJson as ISettings
@@ -51,5 +53,7 @@ export let websiteList: INavProps[] = isSelfDevelop
   : (dbJson as unknown as INavProps[])
 
 export let skillsList: ISkill[] = isSelfDevelop ? [] : (skillsJson as ISkill[])
+
+export let promptsList: IPrompt[] = isSelfDevelop ? [] : (promptsJson as IPrompt[])
 
 export let components: IComponentProps[] = isSelfDevelop ? [] : componentJson

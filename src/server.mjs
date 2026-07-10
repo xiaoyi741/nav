@@ -35,6 +35,7 @@ const SEARCH_PATH = joinPath('data/search.json')
 const COLLECT_PATH = joinPath('data/collect.json')
 const COMPONENT_PATH = joinPath('data/component.json')
 const SKILLS_PATH = joinPath('data/skills.json')
+const PROMPTS_PATH = joinPath('data/prompts.json')
 const ENTRY_INDEX_HTML = joinPath('dist/index.html')
 
 function getConfigJson() {
@@ -377,6 +378,70 @@ app.delete('/api/skills/:id', verifyMiddleware, (req, res) => {
     let data = getSkills()
     data = data.filter((s) => String(s.id) !== String(req.params.id))
     fs.writeFileSync(SKILLS_PATH, JSON.stringify(data, null, 2))
+    res.json({ message: 'OK' })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+// ---------- Prompts CRUD API ----------
+
+function getPrompts() {
+  try {
+    return JSON.parse(fs.readFileSync(PROMPTS_PATH).toString())
+  } catch {
+    return []
+  }
+}
+
+app.get('/api/prompts', (req, res) => {
+  try {
+    res.json(getPrompts())
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+app.get('/api/prompts/:id', (req, res) => {
+  try {
+    const data = getPrompts()
+    const item = data.find((s) => String(s.id) === String(req.params.id))
+    item ? res.json(item) : res.status(404).json({ message: 'Not found' })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+app.post('/api/prompts', verifyMiddleware, (req, res) => {
+  try {
+    const data = getPrompts()
+    const newItem = { ...req.body, createdAt: new Date().toISOString().slice(0, 10) }
+    data.push(newItem)
+    fs.writeFileSync(PROMPTS_PATH, JSON.stringify(data, null, 2))
+    res.json(newItem)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+app.put('/api/prompts/:id', verifyMiddleware, (req, res) => {
+  try {
+    let data = getPrompts()
+    const idx = data.findIndex((s) => String(s.id) === String(req.params.id))
+    if (idx === -1) return res.status(404).json({ message: 'Not found' })
+    data[idx] = { ...data[idx], ...req.body }
+    fs.writeFileSync(PROMPTS_PATH, JSON.stringify(data, null, 2))
+    res.json(data[idx])
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+app.delete('/api/prompts/:id', verifyMiddleware, (req, res) => {
+  try {
+    let data = getPrompts()
+    data = data.filter((s) => String(s.id) !== String(req.params.id))
+    fs.writeFileSync(PROMPTS_PATH, JSON.stringify(data, null, 2))
     res.json({ message: 'OK' })
   } catch (error) {
     res.status(500).json({ message: error.message })

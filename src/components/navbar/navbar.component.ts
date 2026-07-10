@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     { label: 'AI导航', page: 0 },
     { label: 'AI工具', page: 1 },
     { label: 'AI知识库', page: 2 },
-    { label: 'AI提示词', page: 3 },
+    { label: 'AI提示词', route: '/prompts' },
     { label: 'MCP', page: 4 },
     { label: 'Skills', route: '/skills' },
     { label: 'AI学习资源', page: 6 },

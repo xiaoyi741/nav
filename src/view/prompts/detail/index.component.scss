@@ -1,0 +1,21 @@
+.prompt-detail-page { max-width: 900px; margin: 0 auto; padding: 24px 16px; min-height: 60vh; }
+.back-btn { background: none; border: none; font-size: 14px; cursor: pointer; padding: 0; margin-bottom: 20px; display: inline-block; color: #6e7681; }
+.back-btn:hover { color: #1677ff; }
+.detail-card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 28px; margin-bottom: 24px; }
+.detail-header { margin-bottom: 16px; }
+.detail-title { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+.detail-meta { font-size: 13px; color: #999; margin-bottom: 10px; display: flex; gap: 16px; }
+.detail-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.detail-tag { padding: 3px 12px; border-radius: 6px; background: #f0f5ff; color: #1677ff; font-size: 12px; font-weight: 500; }
+.detail-desc { font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+.content-card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; }
+.content-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.content-card-header h3 { margin: 0; font-size: 16px; font-weight: 600; }
+.copy-btn { padding: 4px 14px; border: 1px solid #e5e7eb; border-radius: 6px; background: #fff; cursor: pointer; font-size: 12px; transition: all .15s; }
+.copy-btn:hover { border-color: #1677ff; color: #1677ff; }
+.content-body { font-size: 14px; line-height: 1.8; white-space: pre-wrap; word-break: break-word; color: #333; }
+:host-context(.dark-container) .detail-card, :host-context(.dark-container) .content-card { border-color: #30363d; }
+:host-context(.dark-container) .detail-tag { background: #21262d; color: #58a6ff; }
+:host-context(.dark-container) .content-body { color: #c9d1d9; }
+:host-context(.dark-container) .copy-btn { background: #0d1117; border-color: #30363d; color: #c9d1d9; }
+:host-context(.dark-container) .copy-btn:hover { border-color: #58a6ff; color: #58a6ff; }

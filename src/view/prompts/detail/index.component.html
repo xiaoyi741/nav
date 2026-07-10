@@ -1,0 +1,26 @@
+<div class="prompt-detail-page">
+  <ng-container *ngIf="prompt; else notFound">
+    <button class="back-btn dark-text" (click)="goBack()">← 返回提示词列表</button>
+    <article class="detail-card dark-bg dark-border-color">
+      <header class="detail-header">
+        <h1 class="detail-title dark-white">{{ prompt.title }}</h1>
+        <div class="detail-meta" *ngIf="prompt.author || prompt.createdAt">
+          <span *ngIf="prompt.author">{{ prompt.author }}</span>
+          <span *ngIf="prompt.createdAt">{{ prompt.createdAt }}</span>
+        </div>
+        <div class="detail-tags">
+          <span class="detail-tag" *ngFor="let tag of prompt.tags">{{ tag }}</span>
+        </div>
+      </header>
+      <p class="detail-desc dark-text">{{ prompt.description }}</p>
+      <div class="content-card dark-bg dark-border-color" *ngIf="prompt.content">
+        <div class="content-card-header">
+          <h3>提示词内容</h3>
+          <button class="copy-btn" (click)="copyContent()">{{ copyDone ? '已复制' : '复制提示词' }}</button>
+        </div>
+        <div class="content-body">{{ prompt.content }}</div>
+      </div>
+    </article>
+  </ng-container>
+  <ng-template #notFound><app-no-data /></ng-template>
+</div>

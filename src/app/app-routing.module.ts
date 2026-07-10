@@ -26,6 +26,9 @@ import DetailComponent from '../view/detail/index.component'
 import SkillsListComponent from '../view/skills/list/index.component'
 import SkillsDetailComponent from '../view/skills/detail/index.component'
 import SystemSkillsComponent from '../view/system/skills/index.component'
+import PromptsListComponent from '../view/prompts/list/index.component'
+import PromptsDetailComponent from '../view/prompts/detail/index.component'
+import SystemPromptsComponent from '../view/system/prompts/index.component'
 import { isSelfDevelop } from 'src/utils/util'
 import { getDefaultTheme } from 'src/utils'
 
@@ -80,6 +83,16 @@ export const routes: Routes = [
     data: {},
   },
   {
+    path: 'prompts',
+    component: PromptsListComponent,
+    data: {},
+  },
+  {
+    path: 'prompts/:id',
+    component: PromptsDetailComponent,
+    data: {},
+  },
+  {
     path: 'system',
     component: SystemComponent,
     children: [
@@ -126,6 +139,10 @@ export const routes: Routes = [
       {
         path: 'skills',
         component: SystemSkillsComponent,
+      },
+      {
+        path: 'prompts',
+        component: SystemPromptsComponent,
       },
       {
         path: '**',

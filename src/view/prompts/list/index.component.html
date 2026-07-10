@@ -1,0 +1,40 @@
+<div class="prompts-page">
+  <header class="prompts-header dark-bg">
+    <h1 class="prompts-title dark-white">一句好提示，搞定AI</h1>
+    <div class="prompts-search">
+      <input nz-input [(ngModel)]="searchKeyword" (ngModelChange)="onSearch()" placeholder="搜索提示词..." class="search-input dark-bg dark-border-color dark-text" />
+    </div>
+    <div class="prompts-tags">
+      <button class="tag-btn" [class.active]="!activeTag" (click)="onTagClick('')">全部</button>
+      <button *ngFor="let tag of allTags" class="tag-btn" [class.active]="activeTag === tag" (click)="onTagClick(tag)">{{ tag }}</button>
+    </div>
+  </header>
+
+  <div class="prompts-list">
+    <div class="prompt-card dark-bg dark-border-color" *ngFor="let item of filteredPrompts" (click)="goToDetail(item.id)">
+      <h3 class="prompt-title ellipsis dark-white">{{ item.title }}</h3>
+      <div class="prompt-tags" *ngIf="item.tags?.length">
+        <span class="prompt-tag" *ngFor="let tag of item.tags.slice(0,3)">{{ tag }}</span>
+      </div>
+      <p class="prompt-desc ellipsis2 dark-text">{{ item.description }}</p>
+      <div class="prompt-meta dark-text">
+        <span *ngIf="item.author">{{ item.author }}</span>
+        <span *ngIf="item.createdAt">{{ item.createdAt }}</span>
+      </div>
+    </div>
+
+    <app-no-data *ngIf="filteredPrompts.length === 0" />
+
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button class="page-btn" (click)="goToPage(1)" [disabled]="currentPage <= 1">&laquo;</button>
+      <button class="page-btn" (click)="goToPage(currentPage - 1)" [disabled]="currentPage <= 1">&lsaquo;</button>
+      <ng-container *ngFor="let p of pages">
+        <button *ngIf="p !== -1" class="page-btn" [class.active]="p === currentPage" (click)="goToPage(p)">{{ p }}</button>
+        <span class="page-ellipsis" *ngIf="p === -1">&hellip;</span>
+      </ng-container>
+      <button class="page-btn" (click)="goToPage(currentPage + 1)" [disabled]="currentPage >= totalPages">&rsaquo;</button>
+      <button class="page-btn" (click)="goToPage(totalPages)" [disabled]="currentPage >= totalPages">&raquo;</button>
+      <span class="page-info">共 {{ totalPages }} 页</span>
+    </div>
+  </div>
+</div>

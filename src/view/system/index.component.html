@@ -85,6 +85,13 @@
             >
               Skills 管理
             </li>
+            <li
+              nz-menu-item
+              [nzSelected]="currentMenu === 'prompts'"
+              (click)="goRoute('/system/prompts')"
+            >
+              提示词管理
+            </li>
           </ul>
         </li>
       </ul>

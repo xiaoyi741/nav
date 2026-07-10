@@ -1,0 +1,9 @@
+.prompts-admin { padding: 20px; min-height: 300px; }
+.admin-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.admin-toolbar h2 { margin: 0; font-size: 20px; font-weight: 600; }
+.name-cell strong { display: block; margin-bottom: 4px; }
+.cell-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.mini-tag { padding: 1px 6px; border-radius: 3px; background: #f0f5ff; color: #1677ff; font-size: 11px; }
+.desc-cell { max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ml-space { margin-left: 10px; }
+.color-red { color: red !important; }

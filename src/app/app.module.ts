@@ -105,6 +105,9 @@ import DetailComponent from '../view/detail/index.component'
 import SkillsListComponent from '../view/skills/list/index.component'
 import SkillsDetailComponent from '../view/skills/detail/index.component'
 import SystemSkillsComponent from '../view/system/skills/index.component'
+import PromptsListComponent from '../view/prompts/list/index.component'
+import PromptsDetailComponent from '../view/prompts/detail/index.component'
+import SystemPromptsComponent from '../view/system/prompts/index.component'
 
 import { SafeHtmlPipe } from 'src/pipe/safeHtml.pipe'
 import { CommonService } from 'src/services/common'
@@ -161,6 +164,9 @@ const icons: IconDefinition[] = [
     SkillsListComponent,
     SkillsDetailComponent,
     SystemSkillsComponent,
+    PromptsListComponent,
+    PromptsDetailComponent,
+    SystemPromptsComponent,
     SwiperComponent,
     FixbarComponent,
     FooterComponent,
