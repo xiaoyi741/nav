@@ -89,6 +89,26 @@
   }
 }
 
+// 侧边栏整体样式
+:host ::ng-deep .sider-compnent {
+  background-color: #fff !important;
+}
+:host ::ng-deep .sider {
+  background-color: #fff !important;
+}
+:host ::ng-deep .ant-menu-inline {
+  background-color: #fff !important;
+}
+:host ::ng-deep .ant-menu-sub {
+  background-color: #fff !important;
+}
+:host ::ng-deep .ant-menu-item {
+  background-color: #fff !important;
+}
+:host ::ng-deep .ant-menu-submenu-title {
+  background-color: #fff !important;
+}
+
 // 暗黑模式
 :host-context(body.dark) {
   .tool-header, .tool-section, .related-card { background: #1d1d1d; box-shadow: 0 1px 4px rgba(0,0,0,0.3); }
