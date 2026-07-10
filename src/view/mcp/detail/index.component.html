@@ -1,0 +1,13 @@
+<div class="mcp-detail-page">
+  <ng-container *ngIf="mcp; else notFound">
+    <button class="back-btn dark-text" (click)="goBack()">← 返回 MCP 列表</button>
+    <article class="detail-card dark-bg dark-border-color">
+      <h1 class="detail-name dark-white">{{ mcp.name }}</h1>
+      <div class="detail-tags" *ngIf="mcp.tags?.length"><span class="detail-tag" *ngFor="let tag of mcp.tags">{{ tag }}</span></div>
+      <p class="detail-desc dark-text">{{ mcp.description }}</p>
+      <div class="detail-actions" *ngIf="mcp.githubUrl"><a class="action-btn" [href]="mcp.githubUrl" target="_blank" rel="noopener noreferrer">访问 GitHub</a></div>
+      <div class="content-card dark-bg dark-border-color" *ngIf="mcp.content"><h3 class="content-title">详细介绍</h3><div class="content-body">{{ mcp.content }}</div></div>
+    </article>
+  </ng-container>
+  <ng-template #notFound><app-no-data /></ng-template>
+</div>

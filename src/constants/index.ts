@@ -19,6 +19,8 @@ export const PROMPTS_PATH = 'data/prompts.json'
 
 export const NEWS_PATH = 'data/news.json'
 
+export const MCP_PATH = 'data/mcp.json'
+
 export const VERSION = navConfig.version
 
 export const STORAGE_KEY_MAP = {

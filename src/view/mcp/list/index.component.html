@@ -1,0 +1,30 @@
+<div class="mcp-page">
+  <header class="mcp-header dark-bg">
+    <h1 class="mcp-title dark-white">发现全球好用的 MCP 服务器</h1>
+    <p class="mcp-subtitle dark-text">持续更新优质 MCP，重塑你的 AI 工作流</p>
+    <div class="mcp-search"><input nz-input [(ngModel)]="searchKeyword" (ngModelChange)="onSearch()" placeholder="搜索 MCP..." class="search-input dark-bg dark-border-color dark-text" /></div>
+    <div class="mcp-tags">
+      <button class="tag-btn" [class.active]="!activeTag" (click)="onTagClick('')">全部</button>
+      <button *ngFor="let tag of allTags" class="tag-btn" [class.active]="activeTag === tag" (click)="onTagClick(tag)">{{ tag }}</button>
+    </div>
+  </header>
+  <div class="mcp-list">
+    <div class="mcp-card dark-bg dark-border-color" *ngFor="let item of filteredMcp" (click)="goToDetail(item.id)">
+      <h3 class="mcp-name ellipsis dark-white">{{ item.name }}</h3>
+      <div class="mcp-tags" *ngIf="item.tags?.length"><span class="mcp-tag" *ngFor="let tag of item.tags.slice(0,3)">{{ tag }}</span></div>
+      <p class="mcp-desc ellipsis2 dark-text">{{ item.description }}</p>
+    </div>
+    <app-no-data *ngIf="filteredMcp.length === 0" />
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button class="page-btn" (click)="goToPage(1)" [disabled]="currentPage <= 1">&laquo;</button>
+      <button class="page-btn" (click)="goToPage(currentPage - 1)" [disabled]="currentPage <= 1">&lsaquo;</button>
+      <ng-container *ngFor="let p of pages">
+        <button *ngIf="p !== -1" class="page-btn" [class.active]="p === currentPage" (click)="goToPage(p)">{{ p }}</button>
+        <span class="page-ellipsis" *ngIf="p === -1">&hellip;</span>
+      </ng-container>
+      <button class="page-btn" (click)="goToPage(currentPage + 1)" [disabled]="currentPage >= totalPages">&rsaquo;</button>
+      <button class="page-btn" (click)="goToPage(totalPages)" [disabled]="currentPage >= totalPages">&raquo;</button>
+      <span class="page-info">共 {{ totalPages }} 页</span>
+    </div>
+  </div>
+</div>

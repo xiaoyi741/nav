@@ -1,0 +1,4322 @@
+[
+  {
+    "id": "2010664902979936260",
+    "name": "Playwright MCP Server",
+    "description": "用于 Playwright 浏览器自动化，使 AI 助手能够控制浏览器、运行测试以及自动化网页交互。",
+    "content": "data-extraction\n\n开发工具\n\n浏览器自动化\n\n立即体验\n\n🛠️ Playwright MCP Server 是什么？\n\nPlaywright MCP Server 是一个用于浏览器自动化的服务工具，它的作用是让程序能直接控制真实浏览器完成网页操作。它不依赖用户手动点击或截图，而是通过代码驱动浏览器加载页面、执行交互、提取内容。整个流程基于 FastMCP 框架构建，启动后即可对外提供标准化的调用接口，适合需要稳定访问动态网页的场景。\n\n为什么需要它？\n\n以往要获取由 JavaScript 渲染的内容——比如单页应用（SPA）或登录后的用户数据——常规的 HTTP 请求往往拿不到完整信息，因为页面内容是在浏览器中动态生成的。开发者通常得自己写 Puppeteer 或 Selenium 脚本，处理弹窗、等待加载、管理浏览器实例，稍有疏忽就会失败。\n\nPlaywright MCP Server 把这些常见操作封装成了可复用的服务。你不再需要重复编写启动浏览器、保持会话、错误重试的逻辑。它直接以服务形式运行，调用时只需说明“打开哪个网址”“点击哪里”“读取哪部分文本”，就能返回结构化结果。\n\n⚡ 核心能力速览\n\n1. 跨浏览器支持\n\n同时兼容 Chromium、Firefox 和 WebKit，你可以指定使用某一引擎运行任务。当某个网站对特定浏览器存在兼容性问题时，可以快速切换，避免因渲染差异导致数据抓取失败。\n\n2. 多任务并行与容错处理\n\n支持并发执行多个浏览器任务，并根据系统资源动态调整负载。如果某个页面加载超时或网络中断，服务会尝试重新连接而非立即终止，减少人工干预频率，适合长时间批量运行。\n\n3. 简洁 API 接口设计\n\n提供清晰的 RESTful 接口，例如发送一个 JSON 请求就能完成“打开页面→等待元素→截图或提取文本”的整套流程。不需要了解 Playwright 的底层语法，也能在项目中快速集成网页操作功能。\n\n4. 易于部署和维护\n\n仅需 Python 3.10+ 环境，安装依赖后即可启动服务。没有复杂的配置文件或外部依赖，适合嵌入到 CI/CD 流程、测试管道或 AI 数据采集系统中。\n\n💡 适合谁？怎么用？\n\n如果你是做后端开发、数据采集或测试自动化，经常遇到“页面能看但爬不了”的情况，这个工具可以直接接入你的工作流。前端团队也可以用它来自动化验证 UI 在不同浏览器下的表现。\n\n建议在以下场景中尝试：\n\n需要定期抓取 SPA 页面的数据报表\n\n构建 LLM 的网页阅读代理，提升模型对实时内容的理解\n\n替代传统 Selenium 脚本，降低维护成本\n\n你可以把它当作一个“远程浏览器控制器”，按需调用，用完即走。只要熟悉基本的 HTTP 请求，几分钟就能跑通第一个自动化任务。\n\ndata-extraction\n\n开发工具\n\n浏览器自动化",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901205745667",
+    "name": "Notion MCP Server",
+    "description": "帮助读取、搜索和管理 Notion 页面及数据库。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664905790119939",
+    "name": "Context7",
+    "description": "将最新的库文档和代码示例直接获取到 LLM 的 prompts 中。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904800264198",
+    "name": "GitLab MCP Server",
+    "description": "使 AI 助手能够管理代码仓库、问题、合并请求以及 CI/CD 流水线。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901155414018",
+    "name": "Chrome DevTools MCP Server",
+    "description": "让 AI 助手能够检查页面、调试 JavaScript 以及分析网络流量。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902216572939",
+    "name": "Web to MCP",
+    "description": "捕获网站组件并直接发送给 Cursor 和 Claude Code 等 AI 编码助手。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664905790119945",
+    "name": "面试鸭 MCP Server",
+    "description": "基于 Spring AI 的面试鸭搜索题目的 MCP Server 服务，快速让 AI 搜索企业面试真题和答案",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903822991380",
+    "name": "GitHub MCP Server",
+    "description": "帮助管理仓库、问题、拉取请求和代码。",
+    "content": "｜鱼皮AI导航\n\nGitHub MCP Server\n\n帮助管理仓库、问题、拉取请求和代码。\n\n开发工具\n\nGitHub\n\n版本控制\n\n自动化\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901193162771",
+    "name": "Redis MCP Server",
+    "description": "让 AI 助手能够与 Redis 数据库交互，执行缓存和数据操作。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902216572932",
+    "name": "MiniMax MCP",
+    "description": "用 MiniMax MCP 一键生成带克隆语音的图文视频，内容创作快到飞起。",
+    "content": "开发工具\n\n文字转语音\n\n娱乐与媒体\n\ntext-to-image\n\nvideo-generation\n\nimage-to-video\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904821235717",
+    "name": "Amap Maps",
+    "description": "使任何 MCP 协议客户端都能无缝集成高德地图，以实现多种基于位置的服务。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903135125508",
+    "name": "Time",
+    "description": "通过 Model Context Protocol (MCP) 服务端为大型语言模型提供时间感知能力。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904875761678",
+    "name": "Framelink Figma MCP Server",
+    "description": "粘贴 Figma 链接就能把设计转代码，Cursor 开发效率直接拉满。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904888344585",
+    "name": "AWS MCP Servers",
+    "description": "无论在何处使用 MCP，帮助你充分释放 AWS 的潜力",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903839768597",
+    "name": "Sequential Thinking",
+    "description": "通过将复杂问题分解为多个连续阶段，促进结构化和渐进式的思考。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664905790119940",
+    "name": "GPT Researcher",
+    "description": "通过 MCP 协议使 LLM 应用能够执行深入的研究。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664905790119942",
+    "name": "Serena",
+    "description": "用AI直接操作代码库，语义检索和编辑全搞定，支持多语言还免费。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664905790119943",
+    "name": "MCP Toolbox For Databases",
+    "description": "用自然语言操作数据库，AI写SQL、管表、建索引，开发快到飞起。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903768465432",
+    "name": "EverArt",
+    "description": "用文本提示一键生成高清图，多模型切换，设计创作超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903814602770",
+    "name": "postgres-mcp",
+    "description": "提供 PostgreSQL 数据库管理功能，协助进行分析、调试、模式管理、数据迁移和监控。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664905790119941",
+    "name": "Cognee",
+    "description": "通过从文本构建知识图谱并支持在其中进行搜索，为 AI 记忆引擎提供动力。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903701356546",
+    "name": "Baidu Map",
+    "description": "用MCP协议调百度地图API，查地点、规划路线像聊天一样自然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903743299607",
+    "name": "EdgeOne Pages MCP",
+    "description": "写完 HTML 直接部署，秒生成公网可访问链接，分享页面就像发文件一样简单。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664905785925648",
+    "name": "MySQL MCP服务器",
+    "description": "用自然语言查MySQL，不用写SQL也能操作数据库，开发分析都省事。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664905790119944",
+    "name": "Howtocook Mcp",
+    "description": "基于Anduin2017 / HowToCook （程序员在家做饭指南）的mcp server，帮你推荐菜谱、规划膳食，解决“今天吃什么“的世纪难题",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900052312067",
+    "name": "AI看线 - A股技术分析与AI预测工具",
+    "description": "用AI看A股，K线走势、财务数据一键分析，Gemini智能预测趋势超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902220767239",
+    "name": "mcp-server-solidworks",
+    "description": "让AI直接操控SolidWorks，设计建模从此动口不动手。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904800264194",
+    "name": "mcp-server-wechat",
+    "description": "让AI直接操控PC版微信，消息自动化和扩展功能一搞就定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904972230670",
+    "name": "Huggingface Daily Papers",
+    "description": "每天自动抓取HuggingFace最新AI论文，读前沿研究再也不用到处翻。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904947064856",
+    "name": "Twitter Username Changes MCP Server",
+    "description": "查Twitter用户名历史，一眼识破山寨币诈骗号。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903126736898",
+    "name": "🪟 Windows-MCP",
+    "description": "让AI直接操控Windows界面，文件管理和应用自动化变得像聊天一样简单。",
+    "content": "系统自动化\n\nwindows\n\n工具\n\ndesktop\n\nwindows-10\n\nwindows-11\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901197357066",
+    "name": "Figma to Vue MCP Server",
+    "description": "Figma设计一键转Vue3组件，自动生成TS和响应式代码，前端开发快多了。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903739105288",
+    "name": "Unreal Engine Generative AI Support Plugin",
+    "description": "用AI直接生成虚幻引擎蓝图和场景，让游戏开发像聊天一样简单。",
+    "content": "开发工具\n\nlightweight\n\nmeta\n\n游戏开发\n\nGemini\n\nOpenAI\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903755882506",
+    "name": "KiCAD MCP: AI-Assisted PCB Design",
+    "description": "用自然语言控制KiCAD画电路板，改布局调参数动动嘴就行。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904905121804",
+    "name": "CHM to Markdown Converter",
+    "description": "轻松把老旧CHM文档转成带代码高亮的Markdown，迁移维护超方便。",
+    "content": "开发工具\n\nMarkdown\n\nnotebook\n\ndocument\n\nchm\n\nrevit\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904980619270",
+    "name": "秘塔搜索",
+    "description": "用秘塔API一键搜遍网页、文档、学术等六类内容，结果转Markdown超方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903713939467",
+    "name": "Akshare Tools",
+    "description": "用AKShare查A股实时行情和历史数据，投资分析一步到位。https://github.com/iefnaf/akshare-mcp",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902229155867",
+    "name": "Clash Royale MCP Server",
+    "description": "用Python轻松对接皇室战争API，实时查数据做分析太方便了。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903659413516",
+    "name": "Cursor Memory MCP",
+    "description": "让Cursor记住你的开发上下文，AI写代码更连贯高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902002663425",
+    "name": "element-plus-mcp",
+    "description": "调用LLM更省更快，还能一键预览Element Plus组件效果。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901188968454",
+    "name": "Mobile MCP",
+    "description": "让AI直接操控安卓手机，不用截图就能精准自动化操作各种应用。",
+    "content": "系统自动化\n\nnodejs\n\nAndroid\n\niOS\n\nTypeScript\n\nAI\n\nadb\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902262710293",
+    "name": "QMT-MCP-Server",
+    "description": "连上QMT就能自动买卖股票，查持仓、下订单全搞定，量化交易一步到位。",
+    "content": "金融\n\nqmt-mcp-server\n\nstock-trading\n\nmodel-control-protocol\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899699990531",
+    "name": "akshare_mcp",
+    "description": "查股票、基金、期货数据超方便，一个工具全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901235105795",
+    "name": "Sketch Context MCP",
+    "description": "把 Sketch 设计稿直接丢给 AI，秒变前端代码，和切图写样式说再见。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904917704721",
+    "name": "Brave Search",
+    "description": "集成 Brave Search API，提供全面的网页、本地、图片、视频和新闻搜索功能，同时支持 AI 驱动的内容摘要。",
+    "content": "开发工具\n\nAI\n\nAPI\n\nWeb\n\nresearch\n\ncontent\n\nWeb Search\n\nSearch Engine\n\nVideo Search\n\nRAG Search\n\nImage Search\n\nPage Snippets\n\nbrave-search\n\nsearch-api\n\nweb-and-local-search\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903017685012",
+    "name": "MCP Mermaid",
+    "description": "输入文字秒出流程图、时序图，写文档做汇报直接少敲一半代码。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899846791176",
+    "name": "claude-autoapprove",
+    "description": "免去反复点击，让Claude工具调用自动过审，开发调试省时又省心。",
+    "content": "开发工具\n\nelectron\n\nClaude\n\nclaude-ai\n\nclaude-desktop\n\n智能体 AI\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904863178759",
+    "name": "MCP Browser",
+    "description": "用AI直接操控无头浏览器，自动化网页操作和数据抓取一气呵成。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903785242639",
+    "name": "AgentPM",
+    "description": "用AI自动拆解项目任务，还能联动Claude生成文档，开发规划省心一半。",
+    "content": "研究与数据\n\ncursor\n\nco-pilot\n\ncursor-ai\n\ncline-ai\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902178824202",
+    "name": "Bitable MCP Server",
+    "description": "用MCP协议直连飞书多维表，查数据、跑SQL全在命令行搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904850595847",
+    "name": "XcodeBuildMCP",
+    "description": "用AI直接操作Xcode项目，构建、清理、运行模拟器全都能一句话搞定。",
+    "content": "开发工具\n\nxcode\n\nxcodebuild\n\nmodel-context-protocol\n\nmodel-context-protocol-servers\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900106838021",
+    "name": "Claude Auto-Approve MCP",
+    "description": "让Claude桌面版自动批准工具调用，调试和自动化从此不用手动点点了。",
+    "content": "开发工具\n\nelectron\n\nyolo\n\nuv\n\nclaude-ai\n\nclaude-desktop\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904888344598",
+    "name": "Baidu Search MCP Server",
+    "description": "搜百度、抓网页、提内容，一键搞定中文信息检索与解析。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902984130574",
+    "name": "Earn With AI",
+    "description": "发现能赚钱的开源AI项目，开发者和创业者的变现利器。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903667802133",
+    "name": "Maton MCP Server",
+    "description": "一个将 Maton AI 的智能体工具包与 AI 助手集成的 MCP 服务端，用于实现高级自动化与编排。",
+    "content": "开发工具\n\nmaton\n\n自动化\n\n编排\n\nAI 智能体\n\nworkflows\n\nmodelcontextprotocol\n\nagent-toolkit\n\nAPI 集成\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901113470981",
+    "name": "Perfetto",
+    "description": "用大白话查Android性能瓶颈，ANR卡顿一键诊断不写SQL。",
+    "content": "研究与数据\n\nperfetto\n\nandroid performance\n\nperfetto analysis\n\nanr detection\n\njank frame detection\n\nmemory profiler\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899813236749",
+    "name": "Futu Stock MCP Server",
+    "description": "用MCP一键接入富途港股美股行情，实盘数据实时推送到AI工具。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899502858245",
+    "name": "Unity MCP Integration",
+    "description": "跟Unity项目聊天式互动，改代码调场景一键搞定，开发效率直接拉满。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899913900036",
+    "name": "Fusion 360 MCP Server",
+    "description": "让AI直接调用Fusion设计功能，设计师做CAD时效率翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904921899025",
+    "name": "Tauri MCP Server",
+    "description": "让 AI 直接操控 Tauri 应用界面，调试日志、自动化测试一气呵成。",
+    "content": "开发工具\n\ntauri\n\ndevelopment\n\n移动端\n\ndesktop\n\n自动化\n\nvisual\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904947064849",
+    "name": "Searoute",
+    "description": "输入起终点坐标，自动生成精准海上航线与距离，航海规划一步到位。",
+    "content": "研究与数据\n\nmaritime\n\nrouting\n\ngeospatial\n\n生活管理\n\ndistance\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902233350157",
+    "name": "Springboot + MCP + JUnit 模板项目",
+    "description": "用Spring Boot搭MCP服务，自带JUnit测试，开发效率翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901105082373",
+    "name": "Godot MCP",
+    "description": "让AI直接操控Godot编辑器，运行项目、抓日志全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902963159047",
+    "name": "FreeCAD MCP",
+    "description": "用Claude直接操控FreeCAD，跨平台自动化建模，批量处理省时省力。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904821235725",
+    "name": "mcp-email-server",
+    "description": "用MCP协议搭邮件服务器，收发邮件全搞定，部署快还带图形化配置。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903797825556",
+    "name": "小红书MCP服务器 | xhs-mcp-server",
+    "description": "抓小红书数据太方便了，一键采集笔记评论还能用AI自动分析导出。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904930287619",
+    "name": "IDA Pro MCP Documentation and Utilities",
+    "description": "不用开IDA界面就能远程调用核心功能，逆向分析自动化轻松搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904980619269",
+    "name": "Unity MCP Server (C#)",
+    "description": "让Unity游戏轻松接入AI和多人联机，开发交互式应用一步到位。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899704184840",
+    "name": "Redbook Poster",
+    "description": "自动发布图文视频到小红书，运营批量内容从此省时省力。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899565772808",
+    "name": "CodeGraph",
+    "description": "使用高性能的 GraphRAG 实现对大型代码库进行索引，并通过自然语言查询代码图谱。",
+    "content": "开发工具\n\ncode-search\n\nknowledge\n\ncontext-engineering\n\ncoding-ai\n\nsemantic-search\n\nclaude-code\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904959647754",
+    "name": "Alibaba Cloud Ops MCP Server",
+    "description": "用标准协议一键管理阿里云ECS、VPC等资源，运维操作全自动化。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903822991379",
+    "name": "Memory MCP 服务器",
+    "description": "一键启动知识图谱服务，轻松实现上下文感知的内容生成与数据持久化。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901247688717",
+    "name": "🛡️ A.I.G（AI-Infra-Guard）",
+    "description": "腾讯开源的AI安全扫描工具，一键检测MCP服务器漏洞，私有部署合规审计超方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903013490701",
+    "name": "Smithery CLI",
+    "description": "安装并管理 Model Context Protocol（MCP）服务端，保持客户端无关性。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904968036378",
+    "name": "Db Mcp",
+    "description": "连上Claude就能直接查改MySQL，运维开发都少敲一半命令。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901188968449",
+    "name": "amazon-ads-mcp-server",
+    "description": "用自然语言查亚马逊广告数据，改 campaigns、关键词超方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899788070915",
+    "name": "Control Chrome with AppleScript",
+    "description": "用AppleScript一键操控Chrome标签页和窗口，自动化浏览省时又高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902111715342",
+    "name": "Mysql-Mcp-Server",
+    "description": "用Java轻松连管MySQL，一行命令搞定数据库操作，开发运维都省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902266904588",
+    "name": "Cline Memory Bank",
+    "description": "通过 Cline VSCode 扩展为 AI 辅助编码维护开发会话间的项目上下文。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901142831113",
+    "name": "frida-mcp",
+    "description": "用Frida实时监控和篡改安卓应用行为，逆向分析就像在应用里装了透视外挂。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664905785925650",
+    "name": "ASR Graph of Thoughts (GoT) Model Context Protocol (MCP) Server",
+    "description": "用图结构升级AI推理，复杂问题拆解更清晰，科研决策效率翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903684579334",
+    "name": "Ha Mcp For Xiaozhi",
+    "description": "用小智AI语音直控Home Assistant，装上就能说句话开关灯，超方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901956526087",
+    "name": "Codescene",
+    "description": "让AI编程时实时获取代码健康洞察，本地化分析提升质量与可维护性。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903713939465",
+    "name": "Sharkmcp",
+    "description": "用AI直接抓包分析网络流量，调试加密通信就像看聊天记录一样简单。",
+    "content": "监控\n\nwireshark\n\nshark\n\ntshark\n\npcap\n\npcapng\n\npacket\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902036217868",
+    "name": "Claude-LMStudio Bridge",
+    "description": "让Claude直接调用LM Studio里的本地大模型，隐私和定制两不误。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903021879302",
+    "name": "Lemonade",
+    "description": "本地跑大模型，用NPU加速，还兼容OpenAI接口，部署测试超方便。",
+    "content": "研究与数据\n\namd\n\nllama\n\nmistral\n\nlocal-server\n\nnpu\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904871567384",
+    "name": "MCP GitHub Reader",
+    "description": "不用克隆仓库，直接读取GitHub代码内容，分析项目结构快多了。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903822991369",
+    "name": "Model Context Protocol (MCP) Example",
+    "description": "让大模型直接调用本地或远程工具，HTTP/CLI双支持，开发LLM应用更高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904791875609",
+    "name": "Leonardo AI MCP Server",
+    "description": "每天白嫖150点，轻松生成75张AI画作，写实动漫奇幻全都有。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899922288645",
+    "name": "Screenshot MCP Server",
+    "description": "让AI直接“看到”屏幕内容，截图分析一步到位，跨平台自动化更轻松。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904955453453",
+    "name": "Financial Analysis MCP Server",
+    "description": "查股价、看财报，直接在对话中调用权威金融数据，投资分析快人一步。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904947064857",
+    "name": "Anchor Browser",
+    "description": "远程控制云浏览器，让AI自动操作网页就像真人一样自然流畅。",
+    "content": "浏览器自动化\n\n浏览器\n\n智能体化\n\nplaywright\n\nselenium\n\npuppeteer\n\nanchor\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904758321153",
+    "name": "@codesys/mcp-toolkit",
+    "description": "用AI直接操作CODESYS项目，自动生成PLC程序、管理POU，开发自动化更高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901960720399",
+    "name": "mcp-dingding-bot",
+    "description": "用钉钉机器人自动发文本和Markdown消息，团队通知、告警推送一键直达。",
+    "content": "通信\n\ndingtalk\n\ndingtalk-robot\n\ndingding-robot\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904959647764",
+    "name": "Web Agent Protocol",
+    "description": "通过记录和回放浏览器操作，实现用户、Web 代理与浏览器之间的无缝交互。",
+    "content": "浏览器自动化\n\nWeb\n\nPython\n\nwap\n\nAI 智能体\n\nplaywright\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904938676237",
+    "name": "mcp-local-rag",
+    "description": "本地跑RAG搜索，零数据外泄，Claude查网页像开了挂。",
+    "content": "研究与数据\n\nrag\n\nweb-seach\n\nmodel-context-protocol\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903713939474",
+    "name": "exa-mcp",
+    "description": "用Exa-MCP接入Exa搜索API，轻松实现智能搜索与LLM数据检索。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902170435598",
+    "name": "BurpMCP",
+    "description": "用AI帮你分析请求、推测漏洞，渗透测试效率翻倍，赏金猎人必备神器。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901218328591",
+    "name": "ahk-mcp",
+    "description": "用自然语言控制Windows自动化，告别重复操作，效率直接拉满。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901172191237",
+    "name": "MCP-RoCQ (Coq Reasoning Server)",
+    "description": "用Coq做形式化验证，定理证明和类型检查全搞定，搞科研写代码都放心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902245933057",
+    "name": "Prometheus MCP Server",
+    "description": "让AI助手直接查Prometheus指标，写PromQL、看数据、做分析全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904926093313",
+    "name": "MCP Web Browser Server",
+    "description": "用 Claude 就能远程操控无头浏览器，抓动态内容、填表截图全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902094938122",
+    "name": "mcp_mysql_server",
+    "description": "查表改数据、分析SQL性能，连中文字段都能转拼音，MySQL操作一步到位。",
+    "content": "开发工具\n\nMySQL\n\nAI\n\nmodel-context-protocol\n\n数据库\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903013490706",
+    "name": "CodeBox-AI",
+    "description": "自托管Python代码执行，安全隔离还能动态装包，LLM编程超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901084110850",
+    "name": "MCP Google Calendar Server",
+    "description": "用自然语言让AI帮你写日程，Google日历管理从此像聊天一样简单。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903017685008",
+    "name": "Bilibili 粉丝数查询 MCP 服务",
+    "description": "查B站粉丝数不用手动刷页面，AI直接调用MCP秒出结果。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899603521537",
+    "name": "Aseprite MCP Tools",
+    "description": "用AI指令操控Aseprite绘图，批量处理像素图层自动化编辑超省力。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904976424971",
+    "name": "mock-assistant-mcp-server",
+    "description": "生成高度定制的测试用模拟数据，轻松搞定开发调试和自动化测试。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899498663940",
+    "name": "mcp-pyautogui-server",
+    "description": "用自然语言操控鼠标键盘，跨平台自动化测试像聊天一样简单。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900073283589",
+    "name": "Jebmcp",
+    "description": "通过 MCP服务端 实现 JEB Pro 与其他应用程序之间的通信。",
+    "content": "开发工具\n\nreverse-engineering\n\njeb\n\njeb-python-scripts\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899716767747",
+    "name": "Xiaohongshu API MCP Server | 小红书 API 微服务",
+    "description": "把小红书API变成标准接口，查笔记、管用户、做分析全都能用HTTP搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903848157201",
+    "name": "Semantic Scholar MCP Server",
+    "description": "查论文、挖引用、看学者档案，一个API全搞定。",
+    "content": "研究与数据\n\n智能体\n\nsemantic-scholar\n\n大语言模型\n\nfastmcp\n\nacademic-research\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899649658892",
+    "name": "PyMCPAutoGUI 🖱️⌨️🖼️ - GUI Automation via MCP",
+    "description": "用AI控制电脑操作，像真人一样点鼠标敲键盘，跨平台自动化全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903105765401",
+    "name": "Codex MCP Wrapper",
+    "description": "把Codex CLI变成MCP服务，让AI写代码、查问题更高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903063822346",
+    "name": "MCP SSH Server for Windsurf",
+    "description": "在Windsurf里直接连SSH服务器，写代码运维机器一步到位。",
+    "content": "开发工具\n\nmcp-ssh-server\n\nwindsurf\n\nssh-integration\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899687407623",
+    "name": "MCP-Grep",
+    "description": "远程调用本地grep，代码搜索直接集成到工作流。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904968036369",
+    "name": "Derisk",
+    "description": "构建原生 AI 的风险智能系统。",
+    "content": "｜鱼皮AI导航\n\nDerisk\n\n构建原生 AI 的风险智能系统。\n\n开发工具\n\nAI\n\n智能体\n\nDevOps\n\nrisk-analysis\n\nrl\n\nsre\n\naigc\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903734910989",
+    "name": "Total PC Control",
+    "description": "用AI指令直接操控鼠标键盘和屏幕，自动化操作电脑超省事。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899653853186",
+    "name": "omniparser-autogui-mcp",
+    "description": "看屏幕就能自动操作软件，省去重复点击，效率直接拉满。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904926093322",
+    "name": "SonarQube",
+    "description": "实现与 SonarQube 服务端 或 Cloud 的无缝集成，并允许在 agent 上下文中进行代码片段分析。",
+    "content": "开发工具\n\n集成\n\n安全\n\nlinting\n\nstatic analysis\n\nclean code\n\ncode quality\n\nsast\n\nsonarqube\n\n代码分析\n\nai-integration\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904968036370",
+    "name": "CloudSword",
+    "description": "识别云风险，测试安全漏洞，并增强公共云租户的云防护。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903709745155",
+    "name": "dameng-mcp-server",
+    "description": "用Python轻松对接达梦数据库，自动化运维从此变得简单高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903126736906",
+    "name": "MCP Chrome Server",
+    "description": "AI通过MCP远程操控Chrome，自动完成点击、输入、截图等网页操作。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904791875588",
+    "name": "GDB MCP Server",
+    "description": "用AI直接操作GDB调试二进制程序，无源码也能智能分析崩溃和漏洞。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904884150283",
+    "name": "Edge-TTS MCP Server",
+    "description": "用Edge语音引擎实现高质量TTS，让AI对话自带自然人声。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904850595866",
+    "name": "Earnings Feed",
+    "description": "查上市公司财报和内部交易，实时同步SEC数据，不用API密钥就能用。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902073966608",
+    "name": "Coze Mcp Server",
+    "description": "用命令行管理Coze机器人，轻松集成AI工作流到你的应用里。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904842207236",
+    "name": "py-ue5-mcp-server",
+    "description": "用自然语言就能改UE5场景和蓝图，做3D内容像聊天一样简单。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902115909635",
+    "name": "MCP 邮件通知服务",
+    "description": "用QQ邮箱发通知，结合SSE实现实时推送，Node.js项目集成超方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902304653319",
+    "name": "Gemini Image Generation MCP",
+    "description": "用Gemini在Claude里直接文生图，创意设计一步到位。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904976424979",
+    "name": "GitHub Bridge",
+    "description": "使 AI 代理能够安全地访问和管理 GitHub Enterprise 数据，包括用户、组织和许可证。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904959647758",
+    "name": "Vibetest Use",
+    "description": "使用 Browser-Use 代理自动对网站进行 QA 测试，以识别 UI 缺陷、失效链接和可访问性问题。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904762515468",
+    "name": "F2C MCP Server",
+    "description": "一个将 Figma 设计转换为生产就绪代码的 Model Context Protocol 服务端。",
+    "content": "开发工具\n\nfigma\n\n设计转代码\n\nreact\n\ntailwindcss\n\nai-coding\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901222522882",
+    "name": "Vibe Math Mcp",
+    "description": "让大模型直接跑数学计算，从微积分到金融建模全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901167996940",
+    "name": "MCP Task Orchestrator",
+    "description": "把大项目拆成小任务，让多个AI分工协作，开发写文档都更省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902292070403",
+    "name": "MarkItDown MCP Server",
+    "description": "一键把PDF、PPT、图片等全转成Markdown，写文档整资料省心多了。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904951259139",
+    "name": "google-calendar-mcp-server",
+    "description": "用MCP协议直接管Google日历，事件安排和多端提醒全自动化。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903797825541",
+    "name": "fileSystemMCP",
+    "description": "通过MCP用浏览器直接管理本地文件，像操作网盘一样方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899716767749",
+    "name": "Atlassian Confluence MCP Server",
+    "description": "让AI直接读取Confluence知识库，查资料像聊天一样自然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901230911496",
+    "name": "LMStudio-MCP",
+    "description": "让Claude调用本地LLM，数据不出门就能跑私有模型。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903810408469",
+    "name": "Tiktok Ads Mcp Server",
+    "description": "让AI直接管TikTok广告，批量操作、实时优化全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899729350671",
+    "name": "Generate images MCP server",
+    "description": "用文本直接生成图片，支持多模型切换，开发调试全都在一个服务里搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901251883021",
+    "name": "💾 Synology MCP Server",
+    "description": "用AI语音控制群晖NAS，远程管理文件下载像聊天一样自然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901109276682",
+    "name": "猫娘对接飞书云文档",
+    "description": "读取飞书文档内容并提取文本，自动化处理知识库同步更轻松。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904951259162",
+    "name": "Figma Flutter",
+    "description": "通过从 Figma 直接提供丰富的设计数据，帮助 AI 编码代理生成 Flutter 代码。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902967353347",
+    "name": "Tavily MCP Server",
+    "description": "用AI搜网页，直接给答案还带来源，写报告查资料快多了。",
+    "content": "研究与数据\n\n搜索\n\nnews\n\nWeb\n\ntavily\n\nsse\n\nAI 智能体\n\n智能体 AI\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902170435592",
+    "name": "Bazi MCP (八字 MCP) by Cantian AI",
+    "description": "输入生辰就能算八字命盘，AI 集成玄学分析超方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901180579845",
+    "name": "Markdown2PDF",
+    "description": "将 Markdown 内容转换为高质量、适合打印的 PDF 文档，弥合了智能体输出与人类偏好的格式之间的差距。",
+    "content": "知识与内容管理\n\ncontent\n\nMarkdown\n\nPDF\n\nconvert\n\nAI\n\n智能体\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899892928514",
+    "name": "PolyMarket MCP Server",
+    "description": "查PolyMarket预测数据超方便，实时价格历史走势一网打尽。",
+    "content": "研究与数据\n\npolymarket\n\nprediction-market\n\napi-server\n\nAI\n\nmodelcontextprotocol\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903026073613",
+    "name": "Xmind Generator MCP Server",
+    "description": "用AI一键生成Xmind思维导图，整理思路、规划项目省时又高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903055433737",
+    "name": "Dbhub",
+    "description": "提供一个实现 Model Context Protocol（MCP）服务端接口的通用数据库网关。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902308847629",
+    "name": "Termux-API-Tools-MCP-Server 项目说明",
+    "description": "用 Claude 远程控制安卓设备，查信息发短信全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899821625357",
+    "name": "Loki MCP Server",
+    "description": "查Loki日志像聊天一样简单，运维开发联调效率直接拉满。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904976424962",
+    "name": "Flux Image Generation Server",
+    "description": "输入文字就能生成高质量图片，本地或云端部署都方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904762515458",
+    "name": "SSE微信小程序",
+    "description": "用微信小程序就能实时聊AI、看社区，还能定位分享，体验丝滑不卡顿。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902078160907",
+    "name": "Curl MCP Server",
+    "description": "安全执行cURL命令，自动发请求、下文件再也不用担心风险。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899888734211",
+    "name": "Powerpoint MCP server",
+    "description": "写代码就能生成带AI配图的PPT，批量做课件报告省时又省力。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904968036376",
+    "name": "CloudBase AI ToolKit",
+    "description": "使用 AI IDE 自动化生成、部署和托管全栈 Web 应用程序、小程序、数据库及后端服务。",
+    "content": "分析\n\nAI\n\n数据库\n\nWeb\n\ncloudbase\n\ntencent-cloud\n\nwechat\n\nmini-programs\n\nserverless\n\n部署\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904968036372",
+    "name": "Milvus",
+    "description": "通过 Model Context Protocol (MCP) 提供对 Milvus 向量数据库功能的访问。",
+    "content": "分析\n\nAI\n\n数据库\n\nMilvus\n\ndocument search\n\nvector database\n\ntext search\n\nvector search\n\nsimilarity search\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904951259147",
+    "name": "mcp-yahoo-finance",
+    "description": "查股票、看行情直接集成Yahoo财经数据，开发金融应用省时又省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903676190730",
+    "name": "duck-duck-scrape-mcp",
+    "description": "免密免费查DuckDuckGo搜索结果，集成超简单，隐私友好又省成本。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902162046982",
+    "name": "n8n API MCP Server",
+    "description": "连上你的n8n实例，直接在对话中调用API、搜端点，自动化操作快得飞起。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904804458503",
+    "name": "AI CLI",
+    "description": "在终端中通过代理和 MCP 实现 AI 驱动的任务。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903684579352",
+    "name": "Notion Anki",
+    "description": "通过 AnkiConnect 实现从 Notion 页面自动生成 Anki 闪卡，利用 AI 将 toggle block 转换为结构化卡片，并支持实时导入。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904972230675",
+    "name": "PsMCP-MCP-Server-for-Photoshop",
+    "description": "用AI对话直接操控Photoshop，批量修图、自动生成设计省时又省力。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903151902738",
+    "name": "CAD-MCP Server (CAD Model Control Protocol Server)",
+    "description": "用大白话指挥CAD画图，设计师的效率直接翻倍。",
+    "content": "开发工具\n\nAI\n\ncad\n\nmodel-context-protocol\n\ncadmcp\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901960720397",
+    "name": "Playwright MCP Docker Environment",
+    "description": "用Docker一键部署Playwright自动化服务，轻松搞定浏览器任务和测试流程。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903122542610",
+    "name": "gitlab-mcp-server",
+    "description": "让GitLab响应更快，轻松接入模型上下文协议，开发协作效率直接拉满。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902044606493",
+    "name": "mcp-github-trending MCP Server",
+    "description": "轻松获取 GitHub 每日热门项目和开发者，技术趋势一手掌握。",
+    "content": "研究与数据\n\nmcp-github-trending\n\ngithub-api\n\ntrending-repositories\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904846401537",
+    "name": "InsightFlow",
+    "description": "分析实时数据，并通过自然语言查询生成由 AI 驱动的洞察。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903772659734",
+    "name": "🌍 Travel Assistant MCP Server Ecosystem",
+    "description": "用Claude规划旅行，一键查航班、订酒店、看天气算预算，全程不切应用。",
+    "content": "生活管理\n\ntravel-assistant\n\nitinerary-planner\n\nMCP-ecosystem\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902967353365",
+    "name": "MetaTrader 5 MCP Server",
+    "description": "让AI直接读取MT5行情、执行交易，自动化策略从此像聊天一样简单。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904951259141",
+    "name": "Illustrator MCP Server",
+    "description": "在Mac上直接运行JS脚本操控Illustrator，批量设计省时省力。",
+    "content": "开发工具\n\nillustrator\n\nillustrator-scripts\n\nClaude\n\nmodel-context-protocol\n\n自动化\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903789436946",
+    "name": "Mod-Coder-Pack-1.16.1",
+    "description": "专为Minecraft 1.16.1打造的模组开发工具包，轻松集成Optifine做视觉优化。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903068016646",
+    "name": "Gitee MCP Server",
+    "description": "连上Gitee，让AI自动处理代码评审、议题和PR，开发协作效率直接翻倍。",
+    "content": "开发工具\n\ngitee\n\nai-automation\n\ncursor\n\nzed\n\ncline\n\nwindsurf\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899897122817",
+    "name": "1Panel MCP Server",
+    "description": "用 Cursor 直接部署静态网站到 1Panel，省去手动上传的麻烦。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899628687365",
+    "name": "Figma Analyzer",
+    "description": "分析 Figma 文件，并提取节点层级结构和元数据，供 LLM 使用。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904854790150",
+    "name": "MySQL Readonly MCP Server",
+    "description": "连上大模型也能安全查MySQL，只读设计防注入，生产环境用着放心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904867373063",
+    "name": "blender-open-mcp",
+    "description": "用自然语言在Blender里建模，3D创作像聊天一样简单。",
+    "content": "开发工具\n\nPython\n\nblender3d\n\nblender\n\nblender-addon\n\nmodel-context-protocol\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901289631759",
+    "name": "ESXi MCP Server",
+    "description": "用MCP协议轻松管理VMware虚拟机，自动化运维从此变得简单高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899905511426",
+    "name": "Semgrep MCP Server",
+    "description": "通过 MCP 将 Semgrep 静态分析集成到 AI 和 IDE 工作流中。",
+    "content": "开发工具\n\n安全\n\nstatic-analysis\n\ncode-scanning\n\nvulnerabilities\n\nsemgrep\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903789436936",
+    "name": "sentry-selfhosted-mcp",
+    "description": "连上自建 Sentry 查错更高效，查问题、改状态、加评论全在对话里搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903676190741",
+    "name": "Jumpserver MCP Server",
+    "description": "通过标准协议安全管控JumpServer，运维自动化从此更省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902304653316",
+    "name": "MetaTrader 5 MCP Server &amp; Distrobox Automation",
+    "description": "自动优化MT5交易策略，一键生成多格式分析报告，省时又省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901285437448",
+    "name": "MCP Server for apple calendar",
+    "description": "用自然语言就能自动创建苹果日历事件，日程管理像聊天一样简单。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664905785925642",
+    "name": "Dev.to MCP Server",
+    "description": "让AI直接读写Dev.to文章，查热门、发内容全自动。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901235105805",
+    "name": "Dbgmcp",
+    "description": "使用 Model Context Protocol 将 GDB、LLDB 和 PDB 等调试器连接到 LLM 代理。",
+    "content": "自主智能体\n\nAI\n\n数据库\n\n集成\n\npdb\n\ngdb\n\nlldb\n\nmodel-context-protocol-servers\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899377029122",
+    "name": "MCP Server for GitHub Tools",
+    "description": "连开发带查漏洞一气呵成，安全问题早发现早解决。",
+    "content": "开发工具\n\nGitHub\n\n智能体\n\n安全\n\nAI\n\ngithub-advanced-security\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904762515465",
+    "name": "trash-cleaner-mcp-server",
+    "description": "自动扫描清理系统垃圾文件，释放磁盘空间让电脑运行更流畅。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903776854023",
+    "name": "Peekaboo",
+    "description": "仅限 macOS 的 MCP 服务端，供 AI 智能体捕获屏幕截图，并支持可选的视觉问答功能",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903076405257",
+    "name": "QueryWeaver",
+    "description": "利用图驱动的模式理解，将自然语言问题转换为 SQL 查询。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902115909641",
+    "name": "百度地图 MCP Server",
+    "description": "查地址、算路线、看实时路况，AI直接调用百度地图能力，出行应用开发快多了。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901209939981",
+    "name": "Vibe Preprocessing and Analysis MCP Server for CSV files",
+    "description": "处理CSV不用写代码，加载清洗分析可视化一步到位。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903122542604",
+    "name": "MCP DeepSeek 演示项目",
+    "description": "用DeepSeek打通MCP协议，实时调用工具查库存、聊产品超流畅。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899804848144",
+    "name": "OpenAlex MCP Server",
+    "description": "查论文不用到处翻，一个接口直连全球学术库，检索快得像搜索网页。",
+    "content": "研究与数据\n\nopenalex\n\nacademic-research\n\nacademic-papers\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904921899012",
+    "name": "DALL-E MCP Server running on port",
+    "description": "用文字直接生成或修改图片，设计创意内容就像聊天一样自然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903810408456",
+    "name": "AI Music Co-Producer for REAPER DAW",
+    "description": "用自然语言控制REAPER做音乐，调参数、编MIDI全靠聊天，创作效率翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903734910978",
+    "name": "🍏 AppleScript MCP: Full Control of Your Mac",
+    "description": "远程发指令就能用AppleScript操控Mac，自动化任务全靠它。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902203990029",
+    "name": "buttplug-mcp - Buttplug.io MCP Server",
+    "description": "用自然语言就能远程控制情趣设备，调振动查电量全靠一句话。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903810408460",
+    "name": "Baidu AI Search",
+    "description": "用百度AI搜索和AppBuilder-SDK，快速搭建带知识库的AI应用，开发部署全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901302214659",
+    "name": "Game Asset Generator using MCP and Hugging Face Spaces",
+    "description": "用文字秒变2D/3D游戏素材，独立开发者做原型再也不愁资源。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899905511425",
+    "name": "feishu-tools-mcp",
+    "description": "让AI直接读写飞书文档，自动化处理团队资料超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899884539914",
+    "name": "eClass MCP Server",
+    "description": "连上eClass查课、交作业，让AI帮你搞定雅典大学学习事务。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899729350665",
+    "name": "GH_mcp_server",
+    "description": "用自然语言控制Rhino建模，AI自动生成脚本、分析3D文件，设计效率直接翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903852351504",
+    "name": "Xiaozhi ESP32 Server Java",
+    "description": "管设备、调音色、切角色一把搞定，ESP32语音终端管理全给你包了。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903852351493",
+    "name": "CodeQL MCP Server",
+    "description": "让AI直接查CodeQL数据库，找漏洞、析依赖就像聊天一样自然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902019440654",
+    "name": "🚀 OpenCV MCP Server",
+    "description": "用 Claude 就能调用 OpenCV 做图像处理，人脸检测、边缘识别全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901960720386",
+    "name": "Deno 2 Playwright Model Context Protocol Server Example",
+    "description": "用AI直接操控真实浏览器，自动化测试和网页抓取一气呵成。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901205745671",
+    "name": "VSCode MCP",
+    "description": "让AI在VSCode里安全写代码，自动改文件、开项目，协作开发像聊天一样自然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900098449417",
+    "name": "JetBrains MCP Server Plugin",
+    "description": "在IDE里直接调用大模型写代码、做分析，还能自定义AI工具，开发效率翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904972230676",
+    "name": "Persona 4 Golden MCP Hack 🦀💰",
+    "description": "实时修改P4G游戏金钱，跳过刷钱环节，调试学习两不误。https://github.com/Rayato159/persona-4-golden-mcp-real-time-hacking",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904963842059",
+    "name": "🌏 Travel Itinerary Backend System — Full Stack SDE Assignment",
+    "description": "根据天数自动生成普吉岛、甲米行程，SQLite + FastAPI 快速搭建旅行规划后端。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903843962896",
+    "name": "Deep Research MCP Server",
+    "description": "用AI自动搜网页、深度爬内容，一键生成结构化报告，研究效率直接翻倍。",
+    "content": "研究与数据\n\nnodejs\n\ninformation-retrieval\n\nTypeScript\n\n知识与内容管理\n\nweb-crawling\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902292070410",
+    "name": "Xpoz",
+    "description": "查社媒数据不用密钥，Xpoz 直连平台拿分析结果，省心做竞品监控和网红筛选。",
+    "content": "研究与数据\n\ntwitter\n\ninstagram\n\ntiktok\n\n社交媒体\n\n分析\n\nosint\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901310603269",
+    "name": "Calendar App MCP",
+    "description": "本地运行，让AI助手安全读取macOS日历事件与提醒，查日程不再手动翻App。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901218328584",
+    "name": "Browser Control MCP",
+    "description": "让AI直接操控Firefox浏览器，查资料、读网页全自动，效率翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902061383687",
+    "name": "Confluence MCP Server",
+    "description": "让AI轻松读写Confluence页面，查空间、搜内容全自动，团队知识管理秒变智能。",
+    "content": "开发工具\n\nvertex\n\nconfluence-server\n\ngenerativeai\n\ngemini-pro\n\nmodelcontext\n\nconfluence\n\nAPI 集成\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901226717185",
+    "name": "Ranger MCP Server",
+    "description": "用Python跑个轻量MCP服务，所有请求都回“Ranger!”，测试调试超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899892928516",
+    "name": "DolphinScheduler MCP Server",
+    "description": "让AI直接调用DolphinScheduler任务调度，自动化工作流一键编排。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904926093326",
+    "name": "MCP server for LogSeq",
+    "description": "让AI直接读写LogSeq笔记，自动整理会议纪要和项目进度超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903118348302",
+    "name": "Trade Agent MCP Server",
+    "description": "用自然语言直接交易股票和加密货币，查账户、跟投策略全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901209939988",
+    "name": "FunASR-Powered MCP Server (MCPServer)",
+    "description": "用FunASR做语音转写和检测，异步处理还支持多格式音频校验。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899892928519",
+    "name": "MCP Google Map Server",
+    "description": "查路线、找地点一句话搞定，地图信息直接融进聊天里。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901293826052",
+    "name": "Website",
+    "description": "用AI自动模拟红队攻击，覆盖全阶段渗透测试，多平台支持还能自定义攻击模块。",
+    "content": "研究与数据\n\n智能体\n\nAI\n\nviper\n\npost-exploitation\n\nmetasploit-framework\n\ncobalt-strike\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899855179790",
+    "name": "MCP STDIO to SSE Wrapper",
+    "description": "把MCP服务转成SSE流，实时推送数据一步到位，前后端联调省心多了。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904926093333",
+    "name": "SchemaPin 🧷",
+    "description": "用加密签名防篡改，确保AI工具接口可信，发布和调用都安心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904909316101",
+    "name": "mcp-server-restart",
+    "description": "装完MCP工具直接说“restart Claude”，秒重启桌面版，省去手动操作。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904955453449",
+    "name": "MCP PowerShell Exec Server",
+    "description": "让AI助手安全执行PowerShell脚本，运维自动化直接在VSCode里搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903751688201",
+    "name": "MCP-Diagram",
+    "description": "画流程图、拓扑图超顺手，团队协作编辑还能自建服务器部署。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903126736907",
+    "name": "vercel-mcp",
+    "description": "用 Cursor 直接管 Vercel 部署和环境变量，AI 编程时操作云端资源像写代码一样顺手。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902203990043",
+    "name": "MCP Video Digest (视频内容提取总结)",
+    "description": "看视频太费时间？丢个链接就帮你转文字、出摘要，重点一秒抓住。",
+    "content": "研究与数据\n\nmcp-video-digest\n\nvideo-summarization\n\ntranscription-service\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902044606468",
+    "name": "Hyperbrowser MCP Server",
+    "description": "抓网页、提数据，还能自动爬取指定内容，分析师和开发者都省劲了。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901214134285",
+    "name": "code-rules-mcp",
+    "description": "让AI写代码时自动遵守团队规范，省去反复修改的麻烦。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904955453443",
+    "name": "Google Maps",
+    "description": "利用 Google Maps Platform API，使 AI 智能体能够回答基于位置的问题，并执行提供路线指引、检索地点详情等任务。",
+    "content": "开发工具\n\nAI\n\nAPI\n\ngoogle\n\ngoogle-maps\n\n生活管理\n\nmap-api\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903651024903",
+    "name": "Claude Figma",
+    "description": "使 Claude 能够通过插件或 Figma API 与 Figma 交互，实现设计创建、操作和数据检索。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902220767242",
+    "name": "ESP32 MCP Server",
+    "description": "让AI直接对话ESP32硬件，远程监控与控制物联网设备超简单。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902203990041",
+    "name": "ZenFeed: Make RSS 📰 Great Again with AI 🧠✨",
+    "description": "用AI帮你筛选和推送RSS内容，读资讯更高效，还能自建服务器掌控数据。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904875761675",
+    "name": "Stealth Browser MCP Server",
+    "description": "隐身浏览+精准截图，反检测技术让自动化操作像真人一样自然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902308847644",
+    "name": "LearnMCP-xAPI",
+    "description": "让AI自动记录学习行为，打通教育数据与智能辅导系统。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901117665288",
+    "name": "Puppeteer-Extra MCP Server",
+    "description": "用AI操控防检测浏览器，自动点击截图还能绕过反爬，网页操作像真人一样自然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899821625359",
+    "name": "mcp-server-flomo MCP Server",
+    "description": "用MCP把笔记秒存Flomo，跨工具记录像聊天一样自然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904955453463",
+    "name": "Office MCP Server",
+    "description": "让AI直接操作Word和Excel文件，办公自动化从此高效又省心。https://github.com/lescoggi/office-mcp-server",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903856545797",
+    "name": "Langfuse Prompt Management MCP Server",
+    "description": "用MCP直接调用带生产标签的Langfuse提示词，开发时调用管理超方便。",
+    "content": "开发工具\n\n大语言模型\n\nprompting\n\nllmops\n\nprompt-management\n\nlangfuse\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903663607815",
+    "name": "Self-hosted AI starter kit (by the n8n team)",
+    "description": "本地部署AI开发环境，低代码搭建智能体，数据全在自己手里。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903076405249",
+    "name": "Filesystem MCP",
+    "description": "限制目录操作不越界，安全实现文件读写删，防止路径遍历超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901209939971",
+    "name": "Lark rs MCP",
+    "description": "用AI直接读写飞书多维表格，自动化数据同步再也不用手动折腾。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901180579856",
+    "name": "DaVinci Resolve MCP Server",
+    "description": "用自然语言控制DaVinci剪辑，自动化处理时间线和媒体资源超省心。",
+    "content": "开发工具\n\nblackmagic\n\nblackmagic-design\n\nblackmagicdesign\n\ndavinci-resolve\n\ndavinciresolve\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901159608337",
+    "name": "mcp-browser-use-tools",
+    "description": "用最少的依赖实现网页自动点击、搜索和滚动，轻松打造你的浏览器机器人。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901134442523",
+    "name": "Modelscope Mcp Server",
+    "description": "用MCP一键调用ModelScope模型，文生图、论文检索全搞定。",
+    "content": "研究与数据\n\nAIGC\n\nHub\n\nModel\n\nDataset\n\nGradio\n\nModelScope\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903747493897",
+    "name": "Code-Index-MCP (Local-first Code Indexer)",
+    "description": "本地索引+语义搜索，让AI编码助手秒懂你的项目结构。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902958964749",
+    "name": "pingcode-mcp-server",
+    "description": "团队代码协作更高效，TypeScript 保障类型安全，轻松集成主流开发工具。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902170435599",
+    "name": "Mcp Marketplace",
+    "description": "用插件快速扩展AI应用功能，数据处理、机器学习全都能接。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901306408967",
+    "name": "SynoLink MCP Server",
+    "description": "连上你的 Synology NAS，让 AI 助手帮你查文件、管存储、生成分享链接。",
+    "content": "开发工具\n\nmcp-synolink\n\nsynology-nas\n\nfile-operations\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901226717196",
+    "name": "Figma To React Native",
+    "description": "使用 Cursor 的 MCP 从 Figma 设计生成 React Native 组件。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899637075979",
+    "name": "Tasker MCP",
+    "description": "远程调用安卓Tasker自动化任务，让AI或脚本帮你操控设备超方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903835574273",
+    "name": "IDA Pro MCP",
+    "description": "用浏览器就能远程调用IDA Pro分析功能，逆向工程协作变得超方便。",
+    "content": "开发工具\n\nreverse-engineering\n\nida-pro\n\ncursor\n\nida-plugin\n\ncline\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903059628050",
+    "name": "Yandex Maps MCP Server",
+    "description": "查地址、转坐标、生成静态地图，一行代码集成Yandex地图功能超方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901251883013",
+    "name": "YouTube Comment Downloader MCP Server",
+    "description": "抓取YouTube评论不用API密钥，分析用户情绪和热门互动超方便。",
+    "content": "研究与数据\n\nytcomment\n\nyoutube\n\ncomment-downloader\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904921899011",
+    "name": "🛡️ CyberShield MCP — Servidor MCP de Defensa Autónoma (Windows)",
+    "description": "让AI代理一键调用Windows防火墙和安全工具，自动封IP、查威胁，响应速度拉满。",
+    "content": "安全\n\nPython\n\ncibersecurity\n\nfastapi\n\nlangchain-python\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903760076809",
+    "name": "MCP Service",
+    "description": "用Python轻松查番剧、漫画和角色数据，BangumiTV信息一键获取不费劲。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899838402585",
+    "name": "Brave Search MCP Server",
+    "description": "一个集成 Brave Search API 的 MCP 服务端，可为 Web、图像、视频、新闻和本地搜索提供 AI 助手支持。",
+    "content": "开发工具\n\nbrave\n\n搜索\n\nWeb\n\nimages\n\nnews\n\nsummarization\n\nprivacy\n\nbrave-search\n\nsearch-api\n\nweb-and-local-search\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902099132423",
+    "name": "Remotion 영상편집 MCP 서버",
+    "description": "在线剪视频像聊天一样自然，多轨道编辑直接在浏览器里搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901314797590",
+    "name": "🧭 Vibe Check MCP",
+    "description": "实时揪出AI写的烂代码，PR审查直接开挂，技术债少一半。",
+    "content": "开发工具\n\nPython\n\ncode-quality\n\nai-safety\n\ndebugging-tools\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899708379141",
+    "name": "Claude Notification Server",
+    "description": "让Claude在macOS上跑任务时，用声音和通知提醒进度，不用一直盯着看。",
+    "content": "开发工具\n\nmacos\n\nClaude\n\nnotification-system\n\nllm-tools\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904833818632",
+    "name": "mcp-odds-api",
+    "description": "实时获取多平台体育赔率数据，做分析、比价和预测一查就行。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902086549508",
+    "name": "mcp-client-and-server-from-scratch",
+    "description": "手把手教你造 Minecraft 客户端和服务器，彻底搞懂游戏网络通信底层。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900048117764",
+    "name": "MCP Notion",
+    "description": "让大模型直接读写Notion页面和数据库，自动化知识管理超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902094938130",
+    "name": "Meet.bot",
+    "description": "用自然语言让AI帮你约会议，彻底告别手动协调时间的麻烦。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902090743824",
+    "name": "Liana-MCP",
+    "description": "用自然语言分析单细胞通信，自动生成交互图谱，科研效率直接拉满。",
+    "content": "研究与数据\n\nliana-mcp\n\nscRNA-Seq\n\ncell-communication\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899649658889",
+    "name": "scratchattach-mcp",
+    "description": "让Scratch项目突破限制，轻松实现数据共享与自定义扩展协作。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904921899020",
+    "name": "ai-Bible",
+    "description": "用AI精准检索圣经经文，研究释经再也不用翻书，效率翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903802019844",
+    "name": "Easy Code Reader",
+    "description": "读Java项目再也不头疼，自动抠源码+反编译，AI直接帮你理清复杂架构。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899540606983",
+    "name": "fetch-mcp",
+    "description": "抓网页内容和YouTube字幕，开发效率翻倍的MCP工具。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904926093324",
+    "name": "GPTDARR - Sonarr &amp; Radarr MCP Server",
+    "description": "用自然语言管理影视库，AI自动帮你搜剧、添片，省心又高效。",
+    "content": "开发工具\n\ngptdarr\n\nsonarr\n\nradarr\n\nmedia-management\n\n自动化\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904947064860",
+    "name": "Email MCP Server",
+    "description": "连上邮箱就能读写邮件，查收发记录像聊天一样自然。",
+    "content": "开发工具\n\nnode\n\nTypeScript\n\nnodemailer\n\nClaude\n\nanthropic\n\nemail-mcp-server\n\nemail-sender\n\nAI 助手\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904879955982",
+    "name": "AI 图像生成服务",
+    "description": "用AI在Cursor里直接生成高清图，开发测试营销全都能用。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903105765393",
+    "name": "Mcp Agent",
+    "description": "用mcp-agent轻松搭建多AI协作系统，连MCP服务器都帮你管好。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900056506375",
+    "name": "Bookworm",
+    "description": "离线下载Rust文档并建索引，AI编程时秒查API不用联网。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904959647767",
+    "name": "usaspending-mcp",
+    "description": "查美国政府花了多少钱，直接调API拿数据，研究拨款流向超方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903768465444",
+    "name": "ObsidianFetch",
+    "description": "查Obsidian笔记像聊天一样自然，反向链接全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902002663433",
+    "name": "kospi-kosdaq-stock-server",
+    "description": "查韩国股市不用切屏，KOSPI/KOSDAQ实时数据直接在聊天窗口调用。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901226717193",
+    "name": "rednote_mcp",
+    "description": "连上小红书自动发笔记、管评论，运营账号省时又省力。https://github.com/wuzufeng/rednote_mcp",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901180579850",
+    "name": "Kiwi Travel MCP",
+    "description": "聊着天就能查航班、比价格，还能一键直达预订，旅行规划省时又省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903810408473",
+    "name": "阶跃星辰 MCP server",
+    "description": "用阶跃星辰API一键接入文本、图像、语音多模态能力，开发交互式AI应用超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901205745677",
+    "name": "Aider MCP Server",
+    "description": "用AI自动写代码、修Bug，集成Aider代理让编程效率翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901130248203",
+    "name": "Snyk MCP Server",
+    "description": "连上Snyk就能扫GitHub/GitLab漏洞，Claude里直接查安全问题超方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903852351506",
+    "name": "Polarion MCP Servers",
+    "description": "连上Polarion就能远程管需求，开发测试直接同步工作项，协作效率翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903684579349",
+    "name": "lucide-icons-mcp",
+    "description": "搜图标、看分类、拿 React 代码，AI 开发从此秒选 Lucide 图标。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902120103941",
+    "name": "Wizlights MCP Server",
+    "description": "用自然语言控制WiZ智能灯，开关调光全靠说话，智能家居秒变贴心助手。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899569967106",
+    "name": "Frida MCP",
+    "description": "用AI实时操控应用内存，调试逆向从此像聊天一样自然流畅。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664905785925639",
+    "name": "Perspective MCP Server",
+    "description": "让AI化身不同专家在线辩论，产品决策瞬间思路清晰。",
+    "content": "研究与数据\n\nTypeScript\n\nAI 工具\n\nmodel-context-protocol\n\nperspective-mcp-server\n\nPerspective API\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903114153987",
+    "name": "Academia MCP",
+    "description": "跨库搜论文一键直达，写文献综述再也不用挨个网站翻了。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902090743814",
+    "name": "awsome-kali-MCPServers",
+    "description": "让AI直接调用Kali工具链，渗透测试自动化变得像聊天一样自然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901281243146",
+    "name": "Live2D Assistant",
+    "description": "用Live2D角色和AI对话，还能接插件扩展功能，桌面助手从此又萌又能干。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899821625348",
+    "name": "Puppeteer Real Browser MCP Server",
+    "description": "用AI操控浏览器像真人操作，轻松绕过各种反爬验证，抓数据填表全自动。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899804848154",
+    "name": "teable-mcp-server",
+    "description": "连上 Teable 数据库就这么简单，开发应用时数据交互一步到位。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899725156358",
+    "name": "bio-mcp-servers",
+    "description": "整合主流生物信息学工具，让数据分析像聊天一样简单高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904947064840",
+    "name": "FastMCP-Finance",
+    "description": "连上Yahoo Finance，实时抓股票数据做分析，写策略跑自动化一步到位。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903655219216",
+    "name": "ComfyUI_MCP Server（ComfyUI的ModelContextProtocol 服务端 | ModelContextProtocol Server for ComfyUI）",
+    "description": "用配置文件驱动ComfyUI的AI绘图自动化，扩展工具不改代码，调试集成超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902115909645",
+    "name": "text-to-cad",
+    "description": "输入文字秒出CAD图纸，设计师的灵感瞬间变施工图。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901209939983",
+    "name": "Superset MCP Integration",
+    "description": "用自然语言查Superset数据，AI直接生成图表，分析效率翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901113470991",
+    "name": "Unity Code",
+    "description": "使 AI代理能够在 Unity 编辑器中可靠地编译和测试 Unity 代码。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899884539909",
+    "name": "Jira MCP",
+    "description": "用AI自动查改Jira任务，规划冲刺和流转状态，团队协作效率直接拉满。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899859374083",
+    "name": "GitHub OAuth Analytics",
+    "description": "提供一个支持 GitHub OAuth 认证并集成分析跟踪功能的远程 Model Context Protocol 服务端。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899796459530",
+    "name": "ragflow-mcp",
+    "description": "本地快速验证RAGFlow功能，轻量部署无缝对接未来官方协议。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904867373070",
+    "name": "한국투자증권 REST API MCP (Model Context Protocol)",
+    "description": "用Python对接韩国及全球股市，实时查行情、下订单一把搞定。",
+    "content": "金融\n\nmigusdn\n\nKIS\n\nServer\n\nREST API\n\nstock trading\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904833818646",
+    "name": "Netforensicmcp",
+    "description": "用AI直接分析PCAP流量，一键识别恶意IP与敏感行为，调查取证快人一步。",
+    "content": "研究与数据\n\nwireshark\n\n安全\n\nthreathunters\n\nthreatintelligence\n\ncybersecurity\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904766709775",
+    "name": "Gradle MCP Server",
+    "description": "让AI直接操作Gradle项目，查元数据、跑任务和测试全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903797825547",
+    "name": "MCP Kali Server",
+    "description": "AI直接调用Kali命令，渗透测试、CTF攻防一键自动化执行。",
+    "content": "研究与数据\n\n安全\n\npenetration-testing\n\npentesting\n\nkali-tools\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903764271112",
+    "name": "TSP MCP Server",
+    "description": "用自然语言让Claude帮你解旅行商难题，一键生成最短路径与可视化路线图。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902128492571",
+    "name": "Claude Desktop Notion MCP Server",
+    "description": "通过 Notion 安全操作本地文件，读写删改全都有，自动化管理超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902078160914",
+    "name": "Playwright MCP Server 🎭",
+    "description": "让LLM直接操控浏览器，自动填表、截图、执行JS，网页操作全自动化。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901159608321",
+    "name": "Bitnovo Pay",
+    "description": "让AI代理自动处理加密支付，扫码付款、状态查询全搞定。",
+    "content": "金融\n\n加密货币\n\n支付\n\nbitnovo\n\nwebhooks\n\nqr-codes\n\n区块链\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904947064844",
+    "name": "Roblex Studio Model-Context-Protocol Server",
+    "description": "用AI直接生成调试Roblox脚本，查Bug、优化性能，开发效率翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903147708435",
+    "name": "GitHub Repository MCP Server",
+    "description": "让AI直接读取GitHub仓库代码，分析项目结构再也不用手动翻文件。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903109959696",
+    "name": "MCP ChatGPT Server",
+    "description": "让Claude直接调用ChatGPT API，多轮对话和实时搜索全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902996713477",
+    "name": "Swift MCP GUI Server",
+    "description": "用 Claude 就能远程操控 macOS 鼠标键盘，自动化操作全靠它。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899888734219",
+    "name": "nuxt-cursor / vite-plugin-mcp",
+    "description": "让大模型直接理解你的 Vite/Nuxt 项目结构，开发交互更智能流畅。https://github.com/JosephAnson/nuxt-cursor",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899859374092",
+    "name": "Sefaria Jewish Library MCP Server",
+    "description": "查犹太经典不用翻书，AI直接调取原文和注释，研究学习都省事。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899519635461",
+    "name": "PubMed MCP Server",
+    "description": "查PubMed文献像聊天一样简单，AI帮你找论文、读摘要、挖重点。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904896733189",
+    "name": "ApiFox MCP Server",
+    "description": "连上 ApiFox 查接口像聊天一样自然，开发调试再也不用手动翻文档。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904791875595",
+    "name": "AI Chat Desktop Applications",
+    "description": "一口气打开多个AI聊天窗口，像用本地软件一样丝滑切换不卡顿。",
+    "content": "开发工具\n\nelectron\n\nlinux\n\nopen-source\n\nmcpe\n\nubuntu\n\nchatbot\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903667802129",
+    "name": "MCP-Scan: An MCP Security Scanner",
+    "description": "扫描MCP服务器漏洞，防提示注入和权限越界，部署前必用的安全检查工具。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903072210950",
+    "name": "n8n-mcp-server",
+    "description": "用n8n一键串联多服务工作流，自动化任务全靠它搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903042850825",
+    "name": "Fluent MCP",
+    "description": "用Python快速搭建带本地LLM推理的MCP服务，智能决策+工具调用一键集成。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904972230672",
+    "name": "Atlassian Bitbucket MCP Server",
+    "description": "让AI直接操作Bitbucket代码库，审代码、管项目像聊天一样自然。",
+    "content": "开发工具\n\n命令行工具\n\nTypeScript\n\n工具\n\nAI\n\n服务器\n\nrepository\n\nbitbucket\n\nAI 助手\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904942870537",
+    "name": "Hubspot-MCP 🤖",
+    "description": "连通MCP服务器与HubSpot，数据自动同步省时又省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903797825546",
+    "name": "Emailservice",
+    "description": "用QQ邮箱发邮件，Spring Boot集成MCP，开发时调用就像聊聊天。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903772659717",
+    "name": "Tello Drone MCP Server",
+    "description": "连上Tello无人机Wi-Fi，用MCP指令实时控制飞行，编程教学和自动化航拍都方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903663607817",
+    "name": "Mcp Memory Bank",
+    "description": "用ChromaDB存AI记忆，多项目隔离不串场，查得快记得准。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901994274822",
+    "name": "Playwright Test Automation",
+    "description": "用MCP协议驱动Playwright和Puppeteer，网页自动化更高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901251883016",
+    "name": "MCP Image Recognition Server",
+    "description": "看图识物还能提文字，开发集成一步到位。",
+    "content": "｜鱼皮AI导航\n\nMCP Image Recognition Server\n\n看图识物还能提文字，开发集成一步到位。\n\n研究与数据\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900119420931",
+    "name": "MCP Enabled PDF Reader",
+    "description": "直接让AI读PDF内容，分析论文合同再也不用手动翻页。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904963842064",
+    "name": "Aws Athena",
+    "description": "使 AI 助手能够针对 AWS Athena 数据库执行 SQL 查询并检索结果。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904938676236",
+    "name": "Kokoro Tts Mcp",
+    "description": "用开源TTS服务轻松生成多语言语音，调语速音调超自由。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903663607813",
+    "name": "MCP PostgreSQL Server",
+    "description": "让AI安全操作PostgreSQL，防注入、自动管连接，查数据写SQL都安心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903005102096",
+    "name": "VictoriaMetrics MCP Server",
+    "description": "直接让AI助手查VictoriaMetrics指标，监控调试再也不用手动翻界面。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901298020367",
+    "name": "FinQ4Cn MCP Server",
+    "description": "专为国内用户打造，轻松做量化分析、策略回测，连上数据源就能跑。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900094255106",
+    "name": "Figma Dev Mode MCP Server",
+    "description": "一个 Model Context Protocol 服务端，可将 Figma 设计上下文引入开发者工作流，用于 AI 辅助编码。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900056506370",
+    "name": "MCP Obsidian Docker",
+    "description": "用Docker一键部署Obsidian API服务，轻松实现笔记自动化和外部应用联动。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904917704725",
+    "name": "Rostro",
+    "description": "为语言模型扩展即时多模态生成能力，支持图像、音乐和视频的生成。",
+    "content": "开发工具\n\nAI\n\nmedia\n\nimages\n\n娱乐与媒体\n\ntts\n\nmultimodal\n\n文字转语音\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904817041417",
+    "name": "Alist MCP Server",
+    "description": "用MCP协议快速连Alist，自动化获取文件列表超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904783486989",
+    "name": "Notion Light",
+    "description": "使用 Notion API 将 Markdown 文件与 Notion 页面或数据库同步，绕过官方 Model Context Protocol 的低效问题。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903843962897",
+    "name": "MCP CONNECT 4",
+    "description": "命令行里和AI对战四子连珠，轻量又烧脑，一把接一把停不下来。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903051239428",
+    "name": "codevideo-mcp",
+    "description": "用自然语言自动生成编程教程，教技术就像聊天一样简单。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903026073607",
+    "name": "Mcp Yfinance",
+    "description": "查股票历史数据超方便，开盘收盘价、成交量一查就有，分析师必备。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903017684997",
+    "name": "Jina Reader MCP Server",
+    "description": "抓完网页直接转成Markdown，写文档整理资料效率翻倍。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903017684996",
+    "name": "stun-mcp",
+    "description": "快速检测公网IP与NAT类型，调试WebRTC连通性一目了然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902266904601",
+    "name": "MCP-OS · Model Context Protocol Orchestration System",
+    "description": "按需加载MCP，减少冗余提升安全，LLM应用响应更快更省资源。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902120103948",
+    "name": "Browserbase MCP Server",
+    "description": "让大模型直接操控浏览器，自动填表、抓数据、截屏全搞定。",
+    "content": "浏览器自动化\n\nchrome\n\n浏览器\n\nAI\n\nchromium\n\npuppeteer\n\n云平台\n\nllm-integration\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901977497606",
+    "name": "BigGo MCP Server",
+    "description": "跨平台比价神器，查历史价格、对产品规格，购物决策更聪明。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901176385551",
+    "name": "Clockify MCP Server",
+    "description": "用AI自动记录工时，查项目进度、生成报告，Clockify操作全靠聊天完成。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904913510409",
+    "name": "mcp-sentry: A Sentry MCP Server",
+    "description": "查Sentry错误不用切页面，AI直接帮你定位问题根源。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904791875612",
+    "name": "hyper-mcp",
+    "description": "突破Cursor工具数量限制，轻松集成无限MCP工具链。",
+    "content": "开发工具\n\nhyper-mcp\n\ncursor-wrapper\n\nAI\n\ncursor\n\n大语言模型\n\nmcp-client\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903713939466",
+    "name": "AI Dev Toolkit",
+    "description": "让AI直接读写文件、理清代码结构，建项目搭脚手架一套搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903088988170",
+    "name": "Crypto Orderbook MCP",
+    "description": "实时查看主流交易所订单簿深度与失衡，跨平台数据对比一目了然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903055433730",
+    "name": "Exa MCP Server",
+    "description": "用于集成 Exa AI 搜索的 MCP 服务端，使 AI 助手能够执行语义网络搜索和内容检索。",
+    "content": "开发工具\n\nexa\n\n搜索\n\nai-search\n\nsemantic-search\n\nWeb\n\nTypeScript\n\ncode-search\n\ncode-intelligence\n\nAI 助手\n\nexa-api\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900085866502",
+    "name": "小红书自动搜索评论工具（MCP Server 2.0）",
+    "description": "搜小红书关键词自动抓笔记，AI生成评论一键发布，省时省力。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899775488002",
+    "name": "GitHub Repo MCP",
+    "description": "直接让AI读取GitHub仓库代码，查文件、看目录再也不用手动翻网页。",
+    "content": "研究与数据\n\nGitHub\n\ngithub-mcp\n\ngithub-mcp-server\n\nmcp-github\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904972230665",
+    "name": "UniFuncs MCP Server",
+    "description": "用 NPX 快速接入 UniFuncs API，一行命令搞定多功能集成。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903143514133",
+    "name": "Puppeteer MCP Server",
+    "description": "一个通过 Puppeteer 提供浏览器自动化的 MCP 服务端，能够与 Chrome 实例进行交互。",
+    "content": "开发工具\n\npuppeteer\n\n浏览器自动化\n\n网页抓取\n\nai-integration\n\nnodejs\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902090743818",
+    "name": "Personal Productivity Agent",
+    "description": "用AI分析Windows日志、自动管文件，系统问题一眼看穿，效率直接拉满。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901209939969",
+    "name": "AIOS Monorepo",
+    "description": "用MCP打通AI微服务，前后端分离架构一目了然，开发调试超顺手。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899922288643",
+    "name": "mcp-atlassian-server",
+    "description": "用Go玩转Atlassian服务器MCP通信，学习微服务协议超适合。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899704184839",
+    "name": "ZPL-er",
+    "description": "写ZPL代码直接出预览图，调标签布局像修图一样直观方便。",
+    "content": "开发工具\n\nzpl-er\n\nzebra-programming\n\nlabel-generator\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904926093320",
+    "name": "Tripadvisor MCP Server",
+    "description": "查景点、看真实点评，AI帮你一键规划旅行，再也不用反复切换网页。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903747493903",
+    "name": "Spring Ai Mcp Deepseek",
+    "description": "用Spring AI轻松对接Deepseek，MCP集成一步到位，开发AI应用省时省力。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903126736916",
+    "name": "Grafana MCP",
+    "description": "用代码操控 Grafana 仪表盘和数据源，监控配置全自动化。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902292070421",
+    "name": "ACP-MCP-Server",
+    "description": "让ACP代理轻松接入MCP客户端，跨协议通信一键打通。",
+    "content": "开发工具\n\nacp-mcp\n\nbridge-server\n\nprotocol-integration\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904955453461",
+    "name": "Cursor Chat History Vectorizer &amp; Dockerized Search MCP",
+    "description": "搜 Cursor 聊天记录像查文档一样快，本地部署隐私又高效。",
+    "content": "研究与数据\n\nAPI\n\nDocker\n\nself-hosted\n\nembeddings\n\nchat-history\n\nrag\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903839768601",
+    "name": "DocketBird MCP Server",
+    "description": "查案件、下法律文书，一键对接法院数据，律师和律所自动化必备。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903143514126",
+    "name": "Postgres docs and skills. Helps AI coding tools generate better PostgreSQL code.",
+    "description": "让AI写PostgreSQL更靠谱，查手册、优化查询一步到位。https://github.com/timescale/pg-aiguide",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899838402568",
+    "name": "OpenStreetMap (OSM) MCP Server",
+    "description": "让大模型轻松查地点、规划路线，地理分析像聊天一样自然。",
+    "content": "生活管理\n\nopenstreetmap\n\n大语言模型\n\nanthropic-claude\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899729350658",
+    "name": "LLM/MCP Personal Assistant",
+    "description": "用AI聊天方式查维基、搜GitHub，本地部署就能让大模型连上实用工具。",
+    "content": "研究与数据\n\nllm-mcp\n\npersonal-assistant\n\nchat-app\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664905785925641",
+    "name": "Art Institute of Chicago MCP Server",
+    "description": "用大白话搜芝加哥艺术馆藏，找画、查艺术家全都能聊。",
+    "content": "研究与数据\n\nart\n\nart-institue-of-chicago\n\nmodel-context-protocol\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904942870538",
+    "name": "Zettelkasten MCP Server",
+    "description": "用AI串联原子化笔记，像搭积木一样构建你的知识网络。",
+    "content": "知识与内容管理\n\nPython\n\nMarkdown\n\nknowledge-graph\n\nobsidian\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904791875611",
+    "name": "mcp-server-emojikey",
+    "description": "用表情符号定义AI对话风格，跨设备同步情绪与上下文，让LLM交互更个性化。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902203990025",
+    "name": "MCP-Mem0: Long-Term Memory for AI Agents",
+    "description": "让AI记住每次对话，语义搜索调用记忆，打造真正懂你的智能助手。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902120103962",
+    "name": "Obsidian MCP Server Enhanced",
+    "description": "用AI直接读写Obsidian笔记，不用开应用就能自动整理知识库。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902120103951",
+    "name": "MCP Server template for better AI Coding",
+    "description": "用Python快速搭MCP服务器，内置天气示例和文档，AI工具开发省心省力。",
+    "content": "开发工具\n\nPython\n\ntemplate-project\n\naicodeassistant\n\naicoding\n\nmodel-context-protocol\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900056506381",
+    "name": "AI Image Generation Server with MCP Interface",
+    "description": "用AI画图还能这么爽？文本秒变高清图，代理自动调用不卡顿。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899888734221",
+    "name": "MCSS MCP Server",
+    "description": "用Claude直接管理Minecraft服务器，启停、备份、发命令全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899750322179",
+    "name": "WhatsApp Python Automation",
+    "description": "用自然语言就能发WhatsApp消息，本地部署隐私更安全。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899691601923",
+    "name": "SEC EDGAR MCP",
+    "description": "用自然语言查美股公司财报，AI直接调取SEC百万级财务数据不卡壳。",
+    "content": "研究与数据\n\n金融\n\nedgar\n\nedgar-database\n\n大语言模型\n\ngenai\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904821235714",
+    "name": "🛡MobSF MCP Tool",
+    "description": "传个APK或IPA，秒出安全扫描报告，移动应用漏洞一目了然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903789436932",
+    "name": "OpenAI Codex MCP Server",
+    "description": "用Claude调Codex写代码，生成、调试、分析一站式搞定，开发效率直接拉满。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902996713489",
+    "name": "Code2Flow MCP 服务器",
+    "description": "一键生成多语言代码调用图，AI 编程助手集成更轻松。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902178824206",
+    "name": "mcp-blackboard",
+    "description": "多智能体协同神器，用共享黑板统一管理上下文与记忆，复杂任务从此高效流畅。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901113470978",
+    "name": "Lightpanda Go MCP server",
+    "description": "用Go控制Lightpanda浏览器，自动化任务和AI交互一步到位。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899846791189",
+    "name": "MCPM",
+    "description": "用命令行轻松管理本地MCP服务器，一键启停查删，开发调试省时又省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899423166466",
+    "name": "MCP Browser Kit",
+    "description": "让AI直接操控本地浏览器，自动填表抓数据，智能浏览省时又省力。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903659413507",
+    "name": "Code Review",
+    "description": "通过集成本地开发工具链和 AI，实现 GitHub Pull Request 评审的自动化。",
+    "content": "自主智能体\n\nAI\n\nGitHub\n\nCode Review\n\nGit\n\nGithub PR\n\nGithub comment\n\nNotion\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903051239426",
+    "name": "MCP EV Assistant Server",
+    "description": "查充电桩、规划充电路线，还能管电动车文档，出行再也不怕半路没电。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903026073608",
+    "name": "Kodit: A Code Indexing MCP Server",
+    "description": "连上你的代码库，AI 自动生成上下文相关代码，写 Python 项目快多了。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901155414028",
+    "name": "Twelve Data",
+    "description": "通过 WebSocket 提供对金融市场的实时数据访问，用于流式传输价格报价、市场指标和事件。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899838402583",
+    "name": "アイリ Android",
+    "description": "用大模型直接操控安卓设备，自动化测试和任务一步到位。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899729350659",
+    "name": "News Agent",
+    "description": "使用 LangGraph 工作流和 OpenAI 模型，从 Google News RSS 源收集、处理并分析实时新闻数据。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904980619268",
+    "name": "Strava MCP Server",
+    "description": "连上 Strava 查跑步骑行数据，写代码做分析看这一工具就够了。",
+    "content": "开发工具\n\nstrava\n\napi-server\n\nAPI 集成\n\nPython\n\nClaude\n\nanthropic\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904867373078",
+    "name": "AWS Common MCP Servers with CDK Deployment",
+    "description": "用CDK一键部署MCP服务器，轻松打通AWS服务与AI应用的连接。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902094938126",
+    "name": "可以让 AI 基于HTML直接进行原型设计的 MCP 工具，即使没有 figma、axure也可以快速构建软件原型。",
+    "description": "AI一键生成可交互HTML原型，告别Figma，快速验证产品想法。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901956526095",
+    "name": "PostgreSQL MCP Server",
+    "description": "一个已归档的 MCP 服务端，曾为 AI 助手提供针对 PostgreSQL 数据库的 SQL 查询执行和模式检查功能。",
+    "content": "开发工具\n\nPostgreSQL\n\nSQL\n\n数据库\n\nschema\n\nquery-execution\n\ndatabase-exploration\n\n数据库管理\n\nAI 智能体\n\nllm-postgres\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900056506378",
+    "name": "Time Tools Mcp Server",
+    "description": "让AI自动追踪任务时间，开发编程再也不用担心耗时统计。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904871567366",
+    "name": "MCP server for CData Connect Cloud サンプル",
+    "description": "连上CData云服务，直接在Claude里查改各类云端数据，省去来回切换的麻烦。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903843962884",
+    "name": "MCP 3D Printer Server",
+    "description": "远程控制多台3D打印机，STL编辑切片一键搞定，打印监控全掌握。",
+    "content": "开发工具\n\nthreejs\n\noctoprint\n\nduet\n\nthree-js\n\n3d-printing\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903764271114",
+    "name": "Notion MCP Integration",
+    "description": "用Claude语音添加删除Notion待办项，极简操作省时省力。",
+    "content": "开发工具\n\nNotion\n\n任务管理\n\nmcp-integration\n\nClaude\n\nmcp-servers\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903722328067",
+    "name": "Package Version MCP Server",
+    "description": "查 npm 和 Python 包最新版本，写代码时依赖管理更省心。",
+    "content": "开发工具\n\nJavaScript\n\nPython\n\n安全\n\npackage\n\nnode\n\nTypeScript\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903676190728",
+    "name": "Kubernetes MCP Server",
+    "description": "用于 Kubernetes 集成的 MCP 服务端，使 AI 助手能够管理集群、Pod、部署和 K8s 资源。",
+    "content": "开发工具\n\nKubernetes\n\n容器\n\n编排\n\nDevOps\n\n云平台\n\nopenshift\n\nmodel\n\nprotocol\n\nmodel-context-protocol\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903109959692",
+    "name": "Notion Finance Assistant",
+    "description": "通过连接到 Notion 的终端界面，实现自动化费用跟踪、运行智能财务查询，并将真实财务数据与 LLM 集成。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903084793876",
+    "name": "Vonage AI Assist MCP Server",
+    "description": "写代码时直接查Vonage API文档，AI帮你快速集成短信、语音等功能。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902308847638",
+    "name": "Mcp Wecombot Server",
+    "description": "把MCP消息自动推送到企业微信群，通知提醒一键直达。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901109276695",
+    "name": "Claude MCP Manager",
+    "description": "快速切换Claude多环境配置，macOS命令行工具帮你省时省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904963842060",
+    "name": "postgresql-mcp-server-by-cdata",
+    "description": "用自然语言查PostgreSQL，Claude直接对话数据库，省去写SQL的麻烦。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904791875614",
+    "name": "Suiware AI Tools and MCP Server (monorepo)",
+    "description": "让AI直接操作Sui链上资产，转账质押全都能在对话中搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903835574297",
+    "name": "Alpaca Trading MCP Server",
+    "description": "用 Claude 直接交易股票和加密货币，下单、看持仓、查行情全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901960720401",
+    "name": "Gitcode Mcp",
+    "description": "用AI直接操作Gitcode仓库，自动化管理代码省时又高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901130248214",
+    "name": "Prometheus MCP Server (Community)",
+    "description": "开源的 MCP 服务端，用于查询和分析 Prometheus 指标（PromQL、元数据、告警）。",
+    "content": "开发工具\n\nprometheus\n\nmetrics\n\n监控\n\npromql\n\n可观测性\n\nsre\n\nopen source\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900123615237",
+    "name": "AutoBrowser MCP",
+    "description": "AI直接操控浏览器，自动完成查网页、填表单等重复操作，省时又省力。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900094255108",
+    "name": "Outlook Calendar MCP Tool",
+    "description": "用自然语言就能查、改、删 Outlook 日历，开会安排像聊天一样简单。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899888734212",
+    "name": "Sequential Thinking Multi-Agent System (MAS)",
+    "description": "多智能体协同拆解复杂问题，让AI团队为你深度分析决策。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904917704712",
+    "name": "yfinancemcp",
+    "description": "查股价、析财报、比同行，投资决策全在对话中搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904879955973",
+    "name": "MCP DevTools",
+    "description": "连上 Jira 和 Linear，让 AI 在写代码时顺手搞定工单和任务同步。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904863178756",
+    "name": "datadog-mcp-server",
+    "description": "快速接入 Datadog 发送指标事件，监控服务性能超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904804458500",
+    "name": "Sidekick for Indesign",
+    "description": "用自然语言操控InDesign排版，本地运行不传文件，设计师的AI效率外挂。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903680385039",
+    "name": "MCP IP Geolocation Server",
+    "description": "查IP位置不用API密钥，城市国家经纬度一键全知道。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903680385032",
+    "name": "MCP Calendar",
+    "description": "用Claude语音控制谷歌日历，创建会议查日程全靠一句话搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903663607840",
+    "name": "腾讯云开发者社区文章发布 MCP 服务器",
+    "description": "自动把文章发到腾讯云，写技术文省时省力，AI帮你一键搞定发布流程。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903047045132",
+    "name": "Balldontlie MCP Server",
+    "description": "查NBA/NFL/MLB球员赛程数据，一个接口全搞定，开发体育应用超省心。",
+    "content": "研究与数据\n\nnba\n\nnfl\n\nmlb\n\nmodel-context-protocol\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901956526083",
+    "name": "StockMCP",
+    "description": "查股价、看财报全在对话中搞定，做投资分析快得飞起。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899884539907",
+    "name": "Code Reviewer Fixer Agent",
+    "description": "用AI自动揪出代码漏洞，结合Sentry日志给出修复建议，安全上线更省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903013490711",
+    "name": "Relay16 - Nostr Social Client with AI Integration",
+    "description": "用AI写摘要、辅助发帖，Nostr社交体验直接拉满，去中心化互动从未如此顺手。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901314797573",
+    "name": "TickTick MCP Server",
+    "description": "连通TickTick，让AI帮你自动管任务，设提醒、排优先级全都一句话搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899737739267",
+    "name": "spring-boot-ai-mongo-mcp-server",
+    "description": "用Spring Boot搭MCP微服务，集成MongoDB，数据存储通信一步到位。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899540606985",
+    "name": "MindBridge MCP Server ⚡ The AI Router for Big Brain Moves",
+    "description": "用统一接口调多款大模型，智能路由+对比推理，开发AI应用再也不怕被厂商绑死。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904968036363",
+    "name": "MCP Go",
+    "description": "用Go轻松搭建AI模型实时通信服务，开发调试都省心。",
+    "content": "开发工具\n\nAI\n\n大语言模型\n\nanthropic\n\nmodel-context-protocol\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904783486990",
+    "name": "📈 Nasdaq Data Link MCP 🤖",
+    "description": "用大白话查纳斯达克金融数据，GDP、零售趋势张口就来，分析经济不用再翻文档。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903810408463",
+    "name": "Python File Manager MCP",
+    "description": "直接用Python管理本地文件，读内容、查信息、列目录全搞定。",
+    "content": "开发工具\n\nfile-operation\n\nPython\n\nmanagement\n\n知识与内容管理\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903118348304",
+    "name": "MiniMax MCP JS",
+    "description": "用文字直接生成图片、视频和克隆声音，AI多模态创作一手包办。",
+    "content": "研究与数据\n\n文字转语音\n\n娱乐与媒体\n\nminimax\n\nvideo-generation\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903059628039",
+    "name": "Melrose Mcp",
+    "description": "命令行里敲字母就能播音乐，即兴创作或弹《致爱丽丝》都只要一行代码。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902963159049",
+    "name": "MCP Server Hub / Gateway",
+    "description": "统一接入多个MCP服务，一个入口管理所有LLM工具，省去重复配置烦恼。https://github.com/bsmi021/mcp-server-hub-server",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902963159045",
+    "name": "Figma To Vue",
+    "description": "根据 Figma 设计生成遵循 Hostinger 设计系统的 Vue 3 组件。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902958964739",
+    "name": "oatpp-mcp",
+    "description": "用Oat++轻松对接大模型API，让C++服务实现智能工具调用与上下文交互。",
+    "content": "开发工具\n\noatpp\n\nanthropic\n\nmodel-context-protocol\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902203990036",
+    "name": "Web Crawler MCP Server",
+    "description": "让AI助手一键抓取网页正文，自动清洗格式，读文章看资讯超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902120103942",
+    "name": "Vibe Coder MCP Server - v4 Final Release",
+    "description": "让AI记住对话上下文，查得准、想得清，复杂问题也能连贯应对。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901226717195",
+    "name": "非官方的同程旅行 MCP Server",
+    "description": "查同程火车票信息超方便，集成简单，出行应用开发必备。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899804848132",
+    "name": "Image Toolkit MCP Server",
+    "description": "用文字生成或编辑图像，还能一键去背景，AI让设计自动化超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899737739268",
+    "name": "Firecrawl MCP for Zed",
+    "description": "让Zed AI实时获取网页上下文，写代码查资料更准更快。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904955453457",
+    "name": "MCP Server Resend",
+    "description": "用LLM自动写邮件，集成Resend发出去，省时又高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904947064845",
+    "name": "web-search-mcp",
+    "description": "用 Claude 就能实时搜网页，查资料像聊天一样自然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904934481934",
+    "name": "OpenRouter Web Search MCP Server",
+    "description": "用 Claude 就能实时搜网页，问答准确又及时，开发集成超方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904917704723",
+    "name": "ToolHive - making MCP servers easy and secure",
+    "description": "一键部署安全可控的MCP服务器，开发运维都省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904913510426",
+    "name": "This section was written completely by using the SentinelCore agent and its tools(prompt-&gt;get the details from internet-&gt;write it to a file) via gemini 2.0 flash.",
+    "description": "能自动浏览网页、管文件的AI助手，复杂任务一键搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904833818642",
+    "name": "对象存储服务MCP",
+    "description": "用Python快速搭私有S3存储，上传下载管理文件全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903814602771",
+    "name": "MCP Servers 项目",
+    "description": "用TypeScript快速搭建Express服务，开箱即用的Node.js项目模板。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903768465426",
+    "name": "MCP Sandbox",
+    "description": "将 JavaScript 模块转换为沙盒化的 Model Context Protocol (MCP) 服务端，支持自动反射和类型推断。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903084793868",
+    "name": "Notion Connector",
+    "description": "将像 Claude 这样的 AI 助手连接到 Notion 工作区，从而实现与数据库、页面和块的交互。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903026073605",
+    "name": "Google Docs",
+    "description": "使 AI 助手能够直接读取、编辑和格式化 Google Docs 文档。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902275293186",
+    "name": "Discord Notification MCP Server",
+    "description": "任务一完成就自动推送到Discord，开发告警和CI/CD通知超方便。",
+    "content": "通信\n\nTypeScript\n\ndiscord\n\nclaude-code\n\ncloudflare-agents\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902229155846",
+    "name": "PLANKA: Your Kanban-Style Project Mastering Tool 🛠️",
+    "description": "开源看板工具，支持团队协作和Trello迁移，任务管理更高效。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901230911506",
+    "name": "Mercari Jp Mcp",
+    "description": "查日本Mercari商品价格超方便，AI直接帮你抓实时数据做分析。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901130248201",
+    "name": "mcp-svelte-docs",
+    "description": "搜 Svelte 文档不用翻官网，缓存加速加智能过滤，查API快得像本地。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903822991366",
+    "name": "CIRCL CVE SEARCH MCP Server",
+    "description": "查漏洞、评风险全靠它，安全分析从此高效又省心。",
+    "content": "研究与数据\n\ncybersecurity\n\nvulnerability\n\ncve\n\nrisk-assessment\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902203990046",
+    "name": "Notion Knowledge",
+    "description": "建立基于 Cloudflare Workers 的服务端，用于在 Notion 数据库中管理和增强编程知识。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902099132422",
+    "name": "Simple MCP Streamable HTTP Server",
+    "description": "用Express快速搭建MCP流式服务，本地开发调试实时数据推送超方便。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901964914696",
+    "name": "🚀 Aider-MCP: AI Coding Server with Universal Auto-Detection",
+    "description": "并行AI编程神器，自动选模降本增效，多语言项目开发快人一步。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901281243148",
+    "name": "macOS Office 365 MCP Server",
+    "description": "用AI直接操控Mac上的Word、PPT、Excel，写报告做表格全靠一句话搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664901239300100",
+    "name": "Logseq MCP Server",
+    "description": "让大模型直接读写Logseq笔记，自动化整理知识像聊天一样自然。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664900077477894",
+    "name": "Chess.com MCP Server",
+    "description": "查棋手资料、对局记录全靠它，AI分析Chess.com数据变得超简单。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899888734214",
+    "name": "📦 NPM Helper - A tool to help your ai assistant with npm package management.🤖",
+    "description": "用AI自动查更新、升依赖，npm包管理从此省心又安全。https://github.com/pinkpixel-dev/npm-helper-mcp",
+    "content": "开发工具\n\nnodejs\n\nnpm\n\npackage-manager\n\nTypeScript\n\ndependency-manager\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899859374089",
+    "name": "Memory Bank MCP 🧠",
+    "description": "跨会话记住项目进度和关键决策，AI协作开发不再丢上下文。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904959647747",
+    "name": "mcp-cloudwatch-tracker",
+    "description": "连上AWS日志秒变可视面板，查问题再也不用翻命令行。",
+    "content": "监控\n\nmcp-cloudwatch-tracker\n\nlog-tracking\n\naws-cloudwatch\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904879955970",
+    "name": "🧠 NexusMind",
+    "description": "用图结构搞定复杂科研推理，数据关系一目了然，AI分析更靠谱。",
+    "content": "研究与数据\n\ngraph-of-a-function\n\ngraph-of-thoughts\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903697162243",
+    "name": "CODING DevOps MCP Server",
+    "description": "用MCP协议直连CODING，批量管理项目和工作项超省心。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903000907784",
+    "name": "GIS MCP Server",
+    "description": "让大模型直接做GIS分析，算面积、转坐标、搞空间运算全搞定。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902203990044",
+    "name": "mcp-perplexity-search",
+    "description": "用Perplexity API增强LLM对话，查资料写文档直接在聊天里搞定。",
+    "content": "研究与数据\n\n搜索\n\nperplexity\n\nmodel-context-protocol\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664902099132419",
+    "name": "Financial Modeling Prep MCP Server",
+    "description": "查财报、看股价、比同行，投资分析一键搞定，数据党必备。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664899788070917",
+    "name": "Spring AI MCP server to access information from",
+    "description": "查Spring项目版本和生命周期，开发运维再也不用翻官网文档了。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664904821235723",
+    "name": "Agora MCP",
+    "description": "跟AI聊天就能全网比价下单，购物再也不用一家家比价格。",
+    "content": "研究与数据\n\nagora-mcp\n\nproduct-search\n\nshopping-assistant\n\n立即体验",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903835574296",
+    "name": "Official Ampersand AI SDKs",
+    "description": "用AI代理一键操控150+ SaaS工具，跨平台自动化就这么简单。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903671996437",
+    "name": "Claude Document MCP Server",
+    "description": "直接在代码里操作PDF、Word、Excel，批量编辑文档就像写脚本一样简单。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  },
+  {
+    "id": "2010664903126736908",
+    "name": "zotero_mcp",
+    "description": "直连Zotero管理文献，不用第三方工具，数据完全自己掌控。",
+    "content": "",
+    "tags": [],
+    "githubUrl": "https://github.com/liyupi/ai-guide",
+    "createdAt": "2026-07-10"
+  }
+]

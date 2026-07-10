@@ -37,6 +37,7 @@ const COMPONENT_PATH = joinPath('data/component.json')
 const SKILLS_PATH = joinPath('data/skills.json')
 const PROMPTS_PATH = joinPath('data/prompts.json')
 const NEWS_PATH = joinPath('data/news.json')
+const MCP_PATH = joinPath('data/mcp.json')
 const ENTRY_INDEX_HTML = joinPath('dist/index.html')
 
 function getConfigJson() {
@@ -512,6 +513,18 @@ app.delete('/api/news/:id', verifyMiddleware, (req, res) => {
     res.status(500).json({ message: error.message })
   }
 })
+
+// ---------- MCP CRUD API ----------
+
+function getMcp() {
+  try { return JSON.parse(fs.readFileSync(MCP_PATH).toString()) } catch { return [] }
+}
+
+app.get('/api/mcp', (req, res) => { try { res.json(getMcp()) } catch (e) { res.status(500).json({ message: e.message }) } })
+app.get('/api/mcp/:id', (req, res) => { try { const d = getMcp(); const i = d.find(s => String(s.id) === String(req.params.id)); i ? res.json(i) : res.status(404).json({ message: 'Not found' }) } catch (e) { res.status(500).json({ message: e.message }) } })
+app.post('/api/mcp', verifyMiddleware, (req, res) => { try { const d = getMcp(); const n = { ...req.body, createdAt: new Date().toISOString().slice(0, 10) }; d.push(n); fs.writeFileSync(MCP_PATH, JSON.stringify(d, null, 2)); res.json(n) } catch (e) { res.status(500).json({ message: e.message }) } })
+app.put('/api/mcp/:id', verifyMiddleware, (req, res) => { try { let d = getMcp(); const idx = d.findIndex(s => String(s.id) === String(req.params.id)); if (idx === -1) return res.status(404).json({ message: 'Not found' }); d[idx] = { ...d[idx], ...req.body }; fs.writeFileSync(MCP_PATH, JSON.stringify(d, null, 2)); res.json(d[idx]) } catch (e) { res.status(500).json({ message: e.message }) } })
+app.delete('/api/mcp/:id', verifyMiddleware, (req, res) => { try { let d = getMcp(); d = d.filter(s => String(s.id) !== String(req.params.id)); fs.writeFileSync(MCP_PATH, JSON.stringify(d, null, 2)); res.json({ message: 'OK' }) } catch (e) { res.status(500).json({ message: e.message }) } })
 
 app.listen(PORT, () => {
   console.log(`Server is running on port :${PORT}`)

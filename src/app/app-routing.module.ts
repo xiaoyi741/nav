@@ -32,6 +32,9 @@ import SystemPromptsComponent from '../view/system/prompts/index.component'
 import NewsListComponent from '../view/news/list/index.component'
 import NewsDetailComponent from '../view/news/detail/index.component'
 import SystemNewsComponent from '../view/system/news/index.component'
+import McpListComponent from '../view/mcp/list/index.component'
+import McpDetailComponent from '../view/mcp/detail/index.component'
+import SystemMcpComponent from '../view/system/mcp/index.component'
 import { isSelfDevelop } from 'src/utils/util'
 import { getDefaultTheme } from 'src/utils'
 
@@ -106,6 +109,16 @@ export const routes: Routes = [
     data: {},
   },
   {
+    path: 'mcp',
+    component: McpListComponent,
+    data: {},
+  },
+  {
+    path: 'mcp/:id',
+    component: McpDetailComponent,
+    data: {},
+  },
+  {
     path: 'system',
     component: SystemComponent,
     children: [
@@ -160,6 +173,10 @@ export const routes: Routes = [
       {
         path: 'news',
         component: SystemNewsComponent,
+      },
+      {
+        path: 'mcp',
+        component: SystemMcpComponent,
       },
       {
         path: '**',
