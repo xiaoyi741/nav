@@ -4,7 +4,7 @@
 
 <ng-template #done>
   <div id="xiejiahe">
-    <app-icon-git></app-icon-git>
+    <app-icon-git *ngIf="!isDetailPage"></app-icon-git>
 
     <router-outlet></router-outlet>
 
