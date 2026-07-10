@@ -115,6 +115,8 @@ import McpListComponent from '../view/mcp/list/index.component'
 import McpDetailComponent from '../view/mcp/detail/index.component'
 import SystemMcpComponent from '../view/system/mcp/index.component'
 import KnowledgeComponent from '../view/knowledge/index.component'
+import LearningListComponent from '../view/learning/list/index.component'
+import LearningDetailComponent from '../view/learning/detail/index.component'
 
 import { SafeHtmlPipe } from 'src/pipe/safeHtml.pipe'
 import { CommonService } from 'src/services/common'
@@ -181,6 +183,8 @@ const icons: IconDefinition[] = [
     McpDetailComponent,
     SystemMcpComponent,
     KnowledgeComponent,
+    LearningListComponent,
+    LearningDetailComponent,
     SwiperComponent,
     FixbarComponent,
     FooterComponent,

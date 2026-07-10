@@ -1,0 +1,12 @@
+<div class="learning-detail-page">
+  <ng-container *ngIf="item; else notFound">
+    <button class="back-btn dark-text" (click)="goBack()">← 返回学习资源</button>
+    <article class="detail-card dark-bg dark-border-color">
+      <h1 class="detail-title dark-white">{{ item.title }}</h1>
+      <div class="detail-meta dark-text" *ngIf="item.createdAt"><span>{{ item.createdAt }}</span></div>
+      <p class="detail-desc dark-text">{{ item.description }}</p>
+      <div class="content-body dark-bg-gary" *ngIf="item.content">{{ item.content }}</div>
+    </article>
+  </ng-container>
+  <ng-template #notFound><app-no-data /></ng-template>
+</div>

@@ -1,0 +1,26 @@
+<div class="learning-page">
+  <header class="learning-header dark-bg">
+    <h1 class="learning-title dark-white">AI 学习资源</h1>
+    <p class="learning-subtitle dark-text">AI 知识百科，深入浅出学习人工智能</p>
+    <div class="learning-search"><input nz-input [(ngModel)]="searchKeyword" (ngModelChange)="onSearch()" placeholder="搜索..." class="search-input dark-bg dark-border-color dark-text" /></div>
+  </header>
+  <div class="learning-list">
+    <div class="learning-card dark-bg dark-border-color" *ngFor="let item of filtered" (click)="goToDetail(item.id)">
+      <h3 class="learning-title-text ellipsis dark-white">{{ item.title }}</h3>
+      <p class="learning-desc ellipsis2 dark-text">{{ item.description }}</p>
+      <div class="learning-meta dark-text"><span *ngIf="item.createdAt">{{ item.createdAt }}</span></div>
+    </div>
+    <app-no-data *ngIf="filtered.length === 0" />
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button class="page-btn" (click)="goToPage(1)" [disabled]="currentPage <= 1">&laquo;</button>
+      <button class="page-btn" (click)="goToPage(currentPage - 1)" [disabled]="currentPage <= 1">&lsaquo;</button>
+      <ng-container *ngFor="let p of pages">
+        <button *ngIf="p !== -1" class="page-btn" [class.active]="p === currentPage" (click)="goToPage(p)">{{ p }}</button>
+        <span class="page-ellipsis" *ngIf="p === -1">&hellip;</span>
+      </ng-container>
+      <button class="page-btn" (click)="goToPage(currentPage + 1)" [disabled]="currentPage >= totalPages">&rsaquo;</button>
+      <button class="page-btn" (click)="goToPage(totalPages)" [disabled]="currentPage >= totalPages">&raquo;</button>
+      <span class="page-info">共 {{ totalPages }} 页</span>
+    </div>
+  </div>
+</div>

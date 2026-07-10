@@ -36,6 +36,8 @@ import McpListComponent from '../view/mcp/list/index.component'
 import McpDetailComponent from '../view/mcp/detail/index.component'
 import SystemMcpComponent from '../view/system/mcp/index.component'
 import KnowledgeComponent from '../view/knowledge/index.component'
+import LearningListComponent from '../view/learning/list/index.component'
+import LearningDetailComponent from '../view/learning/detail/index.component'
 import { isSelfDevelop } from 'src/utils/util'
 import { getDefaultTheme } from 'src/utils'
 
@@ -122,6 +124,16 @@ export const routes: Routes = [
   {
     path: 'knowledge',
     component: KnowledgeComponent,
+    data: {},
+  },
+  {
+    path: 'learning',
+    component: LearningListComponent,
+    data: {},
+  },
+  {
+    path: 'learning/:id',
+    component: LearningDetailComponent,
     data: {},
   },
   {

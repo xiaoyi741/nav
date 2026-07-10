@@ -1,0 +1,11 @@
+.learning-detail-page { max-width: 900px; margin: 0 auto; padding: 24px 16px; min-height: 60vh; }
+.back-btn { background: none; border: none; font-size: 14px; cursor: pointer; padding: 0; margin-bottom: 20px; display: inline-block; color: #6e7681; }
+.back-btn:hover { color: #1677ff; }
+.detail-card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 28px; margin-bottom: 24px; }
+.detail-title { font-size: 24px; font-weight: 700; margin: 0 0 10px; }
+.detail-meta { font-size: 13px; color: #999; margin-bottom: 16px; }
+.detail-desc { font-size: 15px; line-height: 1.7; margin-bottom: 20px; color: #555; }
+.content-body { font-size: 15px; line-height: 1.8; white-space: pre-wrap; word-break: break-word; color: #333; padding: 20px; border-radius: 8px; background: #f9f9f9; }
+:host-context(.dark-container) .detail-card { border-color: #30363d; }
+:host-context(.dark-container) .content-body { color: #c9d1d9; background: #21262d; }
+:host-context(.dark-container) .detail-desc { color: #8b949e; }
