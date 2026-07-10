@@ -35,7 +35,7 @@
             <li
               nz-menu-item
               *ngFor="let el of item.nav; let idIdx = index; trackBy: commonService.trackByItem"
-              (click)="commonService.handleSidebarNav(idIdx, pageIdx)"
+              (click)="goCategory(pageIdx, idIdx)"
             >
               <img *ngIf="el.icon" class="sideicon fixicon" [src]="el.icon" />
               <span class="ellipsis">{{ el.title }}</span>
