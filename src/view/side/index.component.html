@@ -28,7 +28,7 @@
           "
           (nzOpenChange)="openMenu(item, pageIdx)"
           [nzTitle]="titleTpl"
-          [nzOpen]="item['collapsed']"
+          [nzOpen]="true"
         >
           <ng-template #titleTpl>
             <img *ngIf="item.icon" class="sideicon" [src]="item.icon" />
