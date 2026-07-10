@@ -17,6 +17,8 @@ export const SKILLS_PATH = 'data/skills.json'
 
 export const PROMPTS_PATH = 'data/prompts.json'
 
+export const NEWS_PATH = 'data/news.json'
+
 export const VERSION = navConfig.version
 
 export const STORAGE_KEY_MAP = {

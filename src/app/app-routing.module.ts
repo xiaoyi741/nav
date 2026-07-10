@@ -29,6 +29,9 @@ import SystemSkillsComponent from '../view/system/skills/index.component'
 import PromptsListComponent from '../view/prompts/list/index.component'
 import PromptsDetailComponent from '../view/prompts/detail/index.component'
 import SystemPromptsComponent from '../view/system/prompts/index.component'
+import NewsListComponent from '../view/news/list/index.component'
+import NewsDetailComponent from '../view/news/detail/index.component'
+import SystemNewsComponent from '../view/system/news/index.component'
 import { isSelfDevelop } from 'src/utils/util'
 import { getDefaultTheme } from 'src/utils'
 
@@ -93,6 +96,16 @@ export const routes: Routes = [
     data: {},
   },
   {
+    path: 'news',
+    component: NewsListComponent,
+    data: {},
+  },
+  {
+    path: 'news/:id',
+    component: NewsDetailComponent,
+    data: {},
+  },
+  {
     path: 'system',
     component: SystemComponent,
     children: [
@@ -143,6 +156,10 @@ export const routes: Routes = [
       {
         path: 'prompts',
         component: SystemPromptsComponent,
+      },
+      {
+        path: 'news',
+        component: SystemNewsComponent,
       },
       {
         path: '**',

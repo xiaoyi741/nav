@@ -108,6 +108,9 @@ import SystemSkillsComponent from '../view/system/skills/index.component'
 import PromptsListComponent from '../view/prompts/list/index.component'
 import PromptsDetailComponent from '../view/prompts/detail/index.component'
 import SystemPromptsComponent from '../view/system/prompts/index.component'
+import NewsListComponent from '../view/news/list/index.component'
+import NewsDetailComponent from '../view/news/detail/index.component'
+import SystemNewsComponent from '../view/system/news/index.component'
 
 import { SafeHtmlPipe } from 'src/pipe/safeHtml.pipe'
 import { CommonService } from 'src/services/common'
@@ -167,6 +170,9 @@ const icons: IconDefinition[] = [
     PromptsListComponent,
     PromptsDetailComponent,
     SystemPromptsComponent,
+    NewsListComponent,
+    NewsDetailComponent,
+    SystemNewsComponent,
     SwiperComponent,
     FixbarComponent,
     FooterComponent,

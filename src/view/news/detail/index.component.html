@@ -1,0 +1,19 @@
+<div class="news-detail-page">
+  <ng-container *ngIf="news; else notFound">
+    <button class="back-btn dark-text" (click)="goBack()">← 返回资讯列表</button>
+    <article class="detail-card dark-bg dark-border-color">
+      <h1 class="detail-title dark-white">{{ news.title }}</h1>
+      <div class="detail-meta dark-text" *ngIf="news.author || news.createdAt || news.readCount">
+        <span *ngIf="news.author">{{ news.author }}</span>
+        <span *ngIf="news.createdAt">{{ news.createdAt }}</span>
+        <span *ngIf="news.readCount">{{ news.readCount }} 阅读</span>
+      </div>
+      <p class="detail-desc dark-text">{{ news.description }}</p>
+      <div class="content-body dark-bg-gary" *ngIf="news.content">{{ news.content }}</div>
+      <div class="detail-footer" *ngIf="news.sourceUrl">
+        <a [href]="news.sourceUrl" target="_blank" rel="noopener noreferrer" class="source-link">查看原文 →</a>
+      </div>
+    </article>
+  </ng-container>
+  <ng-template #notFound><app-no-data /></ng-template>
+</div>

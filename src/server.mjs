@@ -36,6 +36,7 @@ const COLLECT_PATH = joinPath('data/collect.json')
 const COMPONENT_PATH = joinPath('data/component.json')
 const SKILLS_PATH = joinPath('data/skills.json')
 const PROMPTS_PATH = joinPath('data/prompts.json')
+const NEWS_PATH = joinPath('data/news.json')
 const ENTRY_INDEX_HTML = joinPath('dist/index.html')
 
 function getConfigJson() {
@@ -442,6 +443,70 @@ app.delete('/api/prompts/:id', verifyMiddleware, (req, res) => {
     let data = getPrompts()
     data = data.filter((s) => String(s.id) !== String(req.params.id))
     fs.writeFileSync(PROMPTS_PATH, JSON.stringify(data, null, 2))
+    res.json({ message: 'OK' })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+// ---------- News CRUD API ----------
+
+function getNews() {
+  try {
+    return JSON.parse(fs.readFileSync(NEWS_PATH).toString())
+  } catch {
+    return []
+  }
+}
+
+app.get('/api/news', (req, res) => {
+  try {
+    res.json(getNews())
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+app.get('/api/news/:id', (req, res) => {
+  try {
+    const data = getNews()
+    const item = data.find((s) => String(s.id) === String(req.params.id))
+    item ? res.json(item) : res.status(404).json({ message: 'Not found' })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+app.post('/api/news', verifyMiddleware, (req, res) => {
+  try {
+    const data = getNews()
+    const newItem = { ...req.body, createdAt: new Date().toISOString().slice(0, 10) }
+    data.push(newItem)
+    fs.writeFileSync(NEWS_PATH, JSON.stringify(data, null, 2))
+    res.json(newItem)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+app.put('/api/news/:id', verifyMiddleware, (req, res) => {
+  try {
+    let data = getNews()
+    const idx = data.findIndex((s) => String(s.id) === String(req.params.id))
+    if (idx === -1) return res.status(404).json({ message: 'Not found' })
+    data[idx] = { ...data[idx], ...req.body }
+    fs.writeFileSync(NEWS_PATH, JSON.stringify(data, null, 2))
+    res.json(data[idx])
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+app.delete('/api/news/:id', verifyMiddleware, (req, res) => {
+  try {
+    let data = getNews()
+    data = data.filter((s) => String(s.id) !== String(req.params.id))
+    fs.writeFileSync(NEWS_PATH, JSON.stringify(data, null, 2))
     res.json({ message: 'OK' })
   } catch (error) {
     res.status(500).json({ message: error.message })
