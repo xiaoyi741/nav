@@ -1,0 +1,99 @@
+<div class="skills-admin">
+  <div class="admin-toolbar">
+    <h2>Skills 管理</h2>
+    <button nz-button nzType="primary" (click)="showCreateModal()">
+      <i nz-icon nzType="plus"></i> 新增 Skill
+    </button>
+  </div>
+
+  <nz-table
+    #skillTable
+    [nzData]="skills"
+    [nzPageSize]="15"
+    [nzShowPagination]="true"
+    nzTableLayout="fixed"
+  >
+    <thead>
+      <tr>
+        <th nzWidth="80px">ID</th>
+        <th nzWidth="140px">Name</th>
+        <th>描述</th>
+        <th nzWidth="100px">创建时间</th>
+        <th nzWidth="120px">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of skillTable.data">
+        <td>{{ data.id }}</td>
+        <td class="name-cell">
+          <strong>{{ data.name }}</strong>
+          <div class="cell-tags" *ngIf="data.tags?.length">
+            <span class="mini-tag" *ngFor="let t of data.tags">{{ t }}</span>
+          </div>
+        </td>
+        <td class="desc-cell">{{ data.description }}</td>
+        <td>{{ data.createdAt }}</td>
+        <td>
+          <a (click)="openEditModal(data)">编辑</a>
+          <nz-popconfirm
+            nzTitle="确定删除该 Skill？"
+            (nzOnConfirm)="confirmDelete(data.id)"
+          >
+            <a nz-popconfirm class="ml-space color-red">删除</a>
+          </nz-popconfirm>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <nz-modal
+    [(nzVisible)]="modalVisible"
+    [nzTitle]="editingSkill ? '编辑 Skill' : '新增 Skill'"
+    (nzOnCancel)="closeModal()"
+    (nzOnOk)="handleOk()"
+    [nzOkLoading]="saving"
+  >
+    <ng-container *nzModalContent>
+      <form nz-form [formGroup]="validateForm">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Name</nz-form-label>
+          <nz-form-control [nzSpan]="19" [nzErrorTip]="'请输入 Name'">
+            <input nz-input formControlName="name" placeholder="skill 名称" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5">描述</nz-form-label>
+          <nz-form-control [nzSpan]="19">
+            <textarea nz-input formControlName="description" rows="3"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5">标签</nz-form-label>
+          <nz-form-control [nzSpan]="19">
+            <nz-select
+              formControlName="tags"
+              nzMode="tags"
+              nzPlaceHolder="输入标签后回车"
+            ></nz-select>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5">GitHub URL</nz-form-label>
+          <nz-form-control [nzSpan]="19">
+            <input nz-input formControlName="githubUrl" placeholder="https://" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5">安装命令</nz-form-label>
+          <nz-form-control [nzSpan]="19">
+            <input nz-input formControlName="installCmd" />
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </ng-container>
+  </nz-modal>
+</div>

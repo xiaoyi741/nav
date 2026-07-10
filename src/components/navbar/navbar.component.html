@@ -1,0 +1,46 @@
+<div class="navbar dark-bg dark-border-color" [class.mobile-open]="mobileOpen">
+  <div class="navbar-inner">
+    <!-- Logo + 站点标题 -->
+    <div class="navbar-brand" (click)="navigateTo(navItems[0], $event)">
+      <img
+        class="navbar-logo"
+        [src]="settings.favicon"
+        draggable="false"
+        alt="logo"
+      />
+      <span class="navbar-title dark-white">{{ settings.title }}</span>
+    </div>
+
+    <!-- 桌面端菜单 -->
+    <nav class="navbar-menu">
+      <a
+        *ngFor="let item of navItems"
+        class="navbar-link dark-text"
+        [class.active]="isActive(item)"
+        [class.dark-text-active]="isActive(item)"
+        [class.dark-item-active]="isActive(item)"
+        (click)="navigateTo(item, $event)"
+      >
+        {{ item.label }}
+      </a>
+    </nav>
+
+    <!-- 移动端汉堡按钮 -->
+    <div class="navbar-hamburger" (click)="toggleMobile()">
+      <i></i><i></i><i></i>
+    </div>
+  </div>
+
+  <!-- 移动端下拉菜单 -->
+  <div class="navbar-mobile-menu dark-bg" [class.open]="mobileOpen">
+    <a
+      *ngFor="let item of navItems"
+      class="navbar-mobile-link dark-text"
+      [class.active]="isActive(item)"
+      [class.dark-text-active]="isActive(item)"
+      (click)="navigateTo(item, $event)"
+    >
+      {{ item.label }}
+    </a>
+  </div>
+</div>

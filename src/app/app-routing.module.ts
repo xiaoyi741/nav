@@ -1,6 +1,6 @@
 // 开源项目，未经作者同意，不得以抄袭/复制代码/修改源代码版权信息。
-// Copyright @ 2018-present xiejiahe. All rights reserved.
-// See https://github.com/xjh22222228/nav
+// YiGo-Ai导航 仅供学习参考
+// See https://github.com/xiaoyi741/nav
 
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
@@ -23,6 +23,9 @@ import CollectComponent from '../view/system/collect/index.component'
 import WebpComponent from '../view/app/default/app.component'
 import VipAuthComponent from '../view/system/vip-auth/index.component'
 import DetailComponent from '../view/detail/index.component'
+import SkillsListComponent from '../view/skills/list/index.component'
+import SkillsDetailComponent from '../view/skills/detail/index.component'
+import SystemSkillsComponent from '../view/system/skills/index.component'
 import { isSelfDevelop } from 'src/utils/util'
 import { getDefaultTheme } from 'src/utils'
 
@@ -64,6 +67,16 @@ export const routes: Routes = [
   {
     path: 'app',
     component: WebpComponent,
+    data: {},
+  },
+  {
+    path: 'skills',
+    component: SkillsListComponent,
+    data: {},
+  },
+  {
+    path: 'skills/:id',
+    component: SkillsDetailComponent,
     data: {},
   },
   {
@@ -109,6 +122,10 @@ export const routes: Routes = [
       {
         path: 'web',
         component: SystemWebComponent,
+      },
+      {
+        path: 'skills',
+        component: SystemSkillsComponent,
       },
       {
         path: '**',

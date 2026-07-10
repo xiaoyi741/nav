@@ -78,6 +78,13 @@
             >
               {{ $t('_webInfo') }}
             </li>
+            <li
+              nz-menu-item
+              [nzSelected]="currentMenu === 'skills'"
+              (click)="goRoute('/system/skills')"
+            >
+              Skills 管理
+            </li>
           </ul>
         </li>
       </ul>
@@ -93,9 +100,9 @@
             {{ $t('_logout') }}
           </button>
           <img [src]="currentVersionSrc" class="ml-2.5" />
-          <a href="https://github.com/xjh22222228/nav/releases" target="_blank">
+          <a href="https://github.com/xiaoyi741/nav/releases" target="_blank">
             <img
-              src="https://img.shields.io/github/v/release/xjh22222228/nav"
+              src="https://img.shields.io/github/v/release/xiaoyi741/nav"
               class="ml-2.5"
             />
           </a>

@@ -34,6 +34,7 @@ const TAG_PATH = joinPath('data/tag.json')
 const SEARCH_PATH = joinPath('data/search.json')
 const COLLECT_PATH = joinPath('data/collect.json')
 const COMPONENT_PATH = joinPath('data/component.json')
+const SKILLS_PATH = joinPath('data/skills.json')
 const ENTRY_INDEX_HTML = joinPath('dist/index.html')
 
 function getConfigJson() {
@@ -303,6 +304,82 @@ app.post('/api/web/info', async (req, res) => {
     return res.json({
       message: error.message,
     })
+  }
+})
+
+// ---------- Skills CRUD API ----------
+
+function getSkills() {
+  try {
+    return JSON.parse(fs.readFileSync(SKILLS_PATH).toString())
+  } catch {
+    return []
+  }
+}
+
+// 获取所有 skills
+app.get('/api/skills', (req, res) => {
+  try {
+    const data = getSkills()
+    res.json(data)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+// 获取单个 skill
+app.get('/api/skills/:id', (req, res) => {
+  try {
+    const data = getSkills()
+    const item = data.find((s) => String(s.id) === String(req.params.id))
+    if (item) {
+      res.json(item)
+    } else {
+      res.status(404).json({ message: 'Not found' })
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+// 新增 skill
+app.post('/api/skills', verifyMiddleware, (req, res) => {
+  try {
+    const data = getSkills()
+    const newItem = { ...req.body, createdAt: new Date().toISOString().slice(0, 10) }
+    data.push(newItem)
+    fs.writeFileSync(SKILLS_PATH, JSON.stringify(data, null, 2))
+    res.json(newItem)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+// 更新 skill
+app.put('/api/skills/:id', verifyMiddleware, (req, res) => {
+  try {
+    let data = getSkills()
+    const idx = data.findIndex((s) => String(s.id) === String(req.params.id))
+    if (idx === -1) {
+      return res.status(404).json({ message: 'Not found' })
+    }
+    data[idx] = { ...data[idx], ...req.body }
+    fs.writeFileSync(SKILLS_PATH, JSON.stringify(data, null, 2))
+    res.json(data[idx])
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+})
+
+// 删除 skill
+app.delete('/api/skills/:id', verifyMiddleware, (req, res) => {
+  try {
+    let data = getSkills()
+    data = data.filter((s) => String(s.id) !== String(req.params.id))
+    fs.writeFileSync(SKILLS_PATH, JSON.stringify(data, null, 2))
+    res.json({ message: 'OK' })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
   }
 })
 

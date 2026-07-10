@@ -1,0 +1,62 @@
+<div class="skills-page">
+  <!-- 头部 -->
+  <header class="skills-header dark-bg">
+    <h1 class="skills-title dark-white">发现让 AI 更好用的 Skills</h1>
+    <p class="skills-subtitle dark-text">记录全球 Agent Skills，释放 AI 执行潜力</p>
+
+    <div class="skills-search">
+      <input
+        nz-input
+        [(ngModel)]="searchKeyword"
+        (ngModelChange)="onSearch()"
+        placeholder="搜索 Skills..."
+        class="search-input dark-bg dark-border-color dark-text"
+      />
+    </div>
+
+    <div class="skills-tags">
+      <button
+        class="tag-btn"
+        [class.active]="!activeTag"
+        (click)="onTagClick('')"
+      >全部</button>
+      <button
+        *ngFor="let tag of allTags"
+        class="tag-btn"
+        [class.active]="activeTag === tag"
+        (click)="onTagClick(tag)"
+      >{{ tag }}</button>
+    </div>
+  </header>
+
+  <!-- 列表 -->
+  <div class="skills-list">
+    <div class="skill-card dark-bg dark-border-color" *ngFor="let skill of filteredSkills" (click)="goToDetail(skill.id)">
+        <h3 class="skill-name dark-white ellipsis">{{ skill.name }}</h3>
+        <div class="skill-tags" *ngIf="skill.tags?.length">
+          <span class="skill-tag" *ngFor="let tag of skill.tags">{{ tag }}</span>
+        </div>
+        <p class="skill-desc dark-text ellipsis2">{{ skill.description }}</p>
+      </div>
+
+      <app-no-data *ngIf="filteredSkills.length === 0" />
+
+      <!-- 分页 -->
+      <div class="pagination" *ngIf="totalPages > 1">
+        <button class="page-btn" (click)="goToPage(1)" [disabled]="currentPage <= 1" title="第一页">&laquo;</button>
+        <button class="page-btn" (click)="goToPage(currentPage - 1)" [disabled]="currentPage <= 1">&lsaquo;</button>
+        <ng-container *ngFor="let p of pages">
+          <button
+            *ngIf="p !== -1"
+            class="page-btn"
+            [class.active]="p === currentPage"
+            (click)="goToPage(p)"
+          >{{ p }}</button>
+          <span class="page-ellipsis" *ngIf="p === -1">&hellip;</span>
+        </ng-container>
+        <button class="page-btn" (click)="goToPage(currentPage + 1)" [disabled]="currentPage >= totalPages">&rsaquo;</button>
+        <button class="page-btn" (click)="goToPage(totalPages)" [disabled]="currentPage >= totalPages" title="最后一页">&raquo;</button>
+        <span class="page-info">共 {{ totalPages }} 页</span>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,67 @@
+<div class="skill-detail-page">
+  <ng-container *ngIf="skill; else notFound">
+    <button class="back-btn dark-text" (click)="goBack()">← 返回 Skills 列表</button>
+
+    <article class="detail-card dark-bg dark-border-color">
+      <header class="detail-header">
+        <h1 class="detail-name dark-white">{{ skill.name }}</h1>
+        <div class="detail-tags">
+          <span class="detail-tag" *ngFor="let tag of skill.tags">{{ tag }}</span>
+        </div>
+      </header>
+
+      <p class="detail-desc dark-text">{{ skill.description }}</p>
+
+      <div class="detail-actions" *ngIf="skill.githubUrl">
+        <a
+          class="action-btn github-btn"
+          [href]="skill.githubUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="iconfont icongithub"></i>
+          访问 GitHub
+        </a>
+      </div>
+
+      <div class="install-section" *ngIf="skill.installCmd">
+        <h3 class="section-title dark-white">快捷安装</h3>
+        <p class="section-desc dark-text">复制到终端去安装 Skill</p>
+        <div class="install-code dark-bg-gary">
+          <code>{{ skill.installCmd }}</code>
+          <button class="copy-btn" (click)="copyInstallCmd()">
+            {{ copyDone ? '已复制' : '复制' }}
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- SKILL.md 内容卡片 -->
+    <div class="content-card dark-bg dark-border-color" *ngIf="skill.content">
+      <h3 class="content-card-title">
+        <i class="iconfont iconwendang"></i>
+        SKILL.md
+      </h3>
+      <div class="content-body">{{ skill.content }}</div>
+    </div>
+
+    <!-- 推荐 -->
+    <div class="related-section" *ngIf="relatedSkills.length > 0">
+      <h3 class="section-title dark-white">Skills 推荐</h3>
+      <div class="related-grid">
+        <div
+          class="related-card dark-bg dark-border-color"
+          *ngFor="let item of relatedSkills"
+          (click)="goToDetail(item.id)"
+        >
+          <h4 class="related-name dark-white">{{ item.name }}</h4>
+          <p class="related-desc dark-text">{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #notFound>
+    <app-no-data />
+  </ng-template>
+</div>

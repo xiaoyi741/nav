@@ -35,6 +35,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs'
 import { NzTagModule } from 'ng-zorro-antd/tag'
 import { NzRateModule } from 'ng-zorro-antd/rate'
 import { NzSwitchModule } from 'ng-zorro-antd/switch'
+import { HttpClientModule } from '@angular/common/http'
 import { DragDropModule } from '@angular/cdk/drag-drop'
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox'
 import { NzPopoverModule } from 'ng-zorro-antd/popover'
@@ -68,6 +69,7 @@ import { WebMoreMenuComponent } from '../components/web-more-menu/index.componen
 import { TagListComponent } from '../components/tag-list/index.component'
 import { CalendarComponent } from '../components/calendar/index.component'
 import { CalendarDrawerComponent } from '../components/calendar/drawer/index.component'
+import { NavbarComponent } from '../components/navbar/navbar.component'
 import { ComponentGroupComponent } from '../components/component-group/index.component'
 import { RuntimeComponent } from '../components/runtime/index.component'
 import { RuntimeDrawerComponent } from '../components/runtime/drawer/index.component'
@@ -100,6 +102,9 @@ import ShortcutComponent from '../view/shortcut/index.component'
 import WebpComponent from '../view/app/default/app.component'
 import VipAuthComponent from '../view/system/vip-auth/index.component'
 import DetailComponent from '../view/detail/index.component'
+import SkillsListComponent from '../view/skills/list/index.component'
+import SkillsDetailComponent from '../view/skills/detail/index.component'
+import SystemSkillsComponent from '../view/system/skills/index.component'
 
 import { SafeHtmlPipe } from 'src/pipe/safeHtml.pipe'
 import { CommonService } from 'src/services/common'
@@ -153,6 +158,9 @@ const icons: IconDefinition[] = [
     WebpComponent,
     VipAuthComponent,
     DetailComponent,
+    SkillsListComponent,
+    SkillsDetailComponent,
+    SystemSkillsComponent,
     SwiperComponent,
     FixbarComponent,
     FooterComponent,
@@ -183,6 +191,7 @@ const icons: IconDefinition[] = [
     HolidayDrawerComponent,
     OffWorkDrawerComponent,
     CalendarDrawerComponent,
+    NavbarComponent,
     ComponentGroupComponent,
     SafeHtmlPipe,
   ],
@@ -220,6 +229,7 @@ const icons: IconDefinition[] = [
     NzTimePickerModule,
     NzDatePickerModule,
     NzSwitchModule,
+    HttpClientModule,
     DragDropModule,
     BrowserModule,
     FormsModule,
