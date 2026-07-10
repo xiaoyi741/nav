@@ -26,6 +26,7 @@ import event from 'src/utils/mitt'
 export class AppComponent {
   isLogin: boolean = isLogin
   fetchIng = true
+  isDetailPage = false
 
   constructor(
     private router: Router,
@@ -39,6 +40,7 @@ export class AppComponent {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.updateDocumentTitle()
+        this.isDetailPage = this.router.url.indexOf('/detail/') >= 0
       }
     })
   }
