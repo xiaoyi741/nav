@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { IMCP } from 'src/types/mcp'
 import { mcpList } from 'src/store'
+import { SeoService } from 'src/services/seo.service'
 
 @Component({
   selector: 'app-mcp-list',
@@ -18,9 +19,13 @@ export default class McpListComponent implements OnInit {
   pageSize = 40
   totalPages = 1
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private seo: SeoService) {}
 
-  ngOnInit() { this.extractTags(); this.applyFilters() }
+  ngOnInit() {
+    this.seo.setPage('MCP 服务器', '发现全球好用的 MCP 服务器，重塑你的 AI 工作流', '/mcp')
+    this.extractTags()
+    this.applyFilters()
+  }
 
   extractTags() {
     const tagSet = new Set<string>()

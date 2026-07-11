@@ -1,18 +1,16 @@
 // 开源项目，未经作者同意，不得以抄袭/复制代码/修改源代码版权信息。
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { ISkill } from 'src/types/skills'
 import { skillsList } from 'src/store'
-import { $t } from 'src/locale'
+import { SeoService } from 'src/services/seo.service'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-skills-detail',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss'],
 })
 export default class SkillsDetailComponent implements OnInit {
-  $t = $t
   skill?: ISkill
   relatedSkills: ISkill[] = []
   copyDone = false
@@ -20,7 +18,7 @@ export default class SkillsDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public router: Router,
-    private cdr: ChangeDetectorRef
+    private seo: SeoService
   ) {}
 
   ngOnInit() {
@@ -33,9 +31,9 @@ export default class SkillsDetailComponent implements OnInit {
   loadSkill(id: string) {
     this.skill = skillsList.find((s) => String(s.id) === id)
     if (this.skill) {
+      this.seo.setPage(this.skill.name, this.skill.description.slice(0, 160), '/skills/' + id)
       this.loadRelated()
     }
-    this.cdr.markForCheck()
   }
 
   loadRelated() {
@@ -46,7 +44,6 @@ export default class SkillsDetailComponent implements OnInit {
     this.relatedSkills = skillsList.filter((s) =>
       this.skill?.relatedIds?.includes(s.id)
     )
-    this.cdr.markForCheck()
   }
 
   goBack() {

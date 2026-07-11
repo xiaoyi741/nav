@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { ILearning } from 'src/types/learning'
 import { learningList } from 'src/store'
+import { SeoService } from 'src/services/seo.service'
 
 @Component({
   selector: 'app-learning-list',
@@ -14,9 +15,12 @@ export default class LearningListComponent implements OnInit {
   searchKeyword = ''
   currentPage = 1; pageSize = 40; totalPages = 1
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private seo: SeoService) {}
 
-  ngOnInit() { this.applyFilters() }
+  ngOnInit() {
+    this.seo.setPage('AI学习资源', 'AI 知识百科，深入浅出学习人工智能', '/learning')
+    this.applyFilters()
+  }
 
   applyFilters() {
     let list = [...this.all]

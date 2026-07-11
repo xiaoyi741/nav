@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { ISkill } from 'src/types/skills'
 import { skillsList } from 'src/store'
+import { SeoService } from 'src/services/seo.service'
 import { $t } from 'src/locale'
 
 @Component({
@@ -21,9 +22,10 @@ export default class SkillsListComponent implements OnInit {
   pageSize = 40
   totalPages = 1
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private seo: SeoService) {}
 
   ngOnInit() {
+    this.seo.setPage('Skills', '发现全球 Agent Skills，释放 AI 执行潜力', '/skills')
     this.extractTags()
     this.applyFilters()
   }

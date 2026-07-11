@@ -121,6 +121,7 @@ import LearningDetailComponent from '../view/learning/detail/index.component'
 import { SafeHtmlPipe } from 'src/pipe/safeHtml.pipe'
 import { CommonService } from 'src/services/common'
 import { JumpService } from 'src/services/jump'
+import { SeoService } from 'src/services/seo.service'
 
 import {
   CheckOutline,
@@ -264,6 +265,7 @@ const icons: IconDefinition[] = [
     { provide: NZ_I18N, useValue: zh_CN },
     CommonService,
     JumpService,
+    SeoService,
   ],
   bootstrap: [AppComponent],
 })

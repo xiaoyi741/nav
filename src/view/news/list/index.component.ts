@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { INews } from 'src/types/news'
 import { newsList } from 'src/store'
+import { SeoService } from 'src/services/seo.service'
 
 @Component({
   selector: 'app-news-list',
@@ -16,9 +17,12 @@ export default class NewsListComponent implements OnInit {
   pageSize = 40
   totalPages = 1
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private seo: SeoService) {}
 
-  ngOnInit() { this.applyFilters() }
+  ngOnInit() {
+    this.seo.setPage('AI资讯', '精选 AI 行业最新动态和资讯', '/news')
+    this.applyFilters()
+  }
 
   applyFilters() {
     let list = [...this.allNews]

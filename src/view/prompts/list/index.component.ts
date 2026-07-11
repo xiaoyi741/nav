@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { IPrompt } from 'src/types/prompts'
 import { promptsList } from 'src/store'
+import { SeoService } from 'src/services/seo.service'
 
 @Component({
   selector: 'app-prompts-list',
@@ -18,9 +19,10 @@ export default class PromptsListComponent implements OnInit {
   pageSize = 40
   totalPages = 1
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private seo: SeoService) {}
 
   ngOnInit() {
+    this.seo.setPage('AI提示词', '一句好提示，搞定AI - 精选 AI 提示词模板', '/prompts')
     this.extractTags()
     this.applyFilters()
   }
