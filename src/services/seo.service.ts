@@ -4,7 +4,7 @@ import { Title, Meta } from '@angular/platform-browser'
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
-  private baseUrl = 'https://xiaoyi741.github.io/nav'
+  private baseUrl = 'http://nav.yigoai.cn'
 
   constructor(private title: Title, private meta: Meta) {}
 

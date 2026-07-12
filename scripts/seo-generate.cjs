@@ -2,7 +2,7 @@
 const fs = require('fs')
 const path = require('path')
 const distDir = 'dist'
-const baseUrl = 'https://xiaoyi741.github.io/nav'
+const baseUrl = 'http://nav.yigoai.cn'
 
 const db = JSON.parse(fs.readFileSync('data/db.json', 'utf-8'))
 const skills = JSON.parse(fs.readFileSync('data/skills.json', 'utf-8'))
