@@ -121,7 +121,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         queryParams: {
           page: item.page,
           id: 0,
-          _: Date.now(),
         },
       })
     }

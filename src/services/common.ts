@@ -68,7 +68,6 @@ export class CommonService {
       queryParams: {
         page: index,
         id,
-        _: Date.now(),
       },
     })
   }
@@ -79,7 +78,6 @@ export class CommonService {
       queryParams: {
         page: pageIndex ?? page,
         id: index,
-        _: Date.now(),
       },
     })
   }
