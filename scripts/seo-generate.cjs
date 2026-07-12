@@ -118,3 +118,70 @@ total += preRender(mcp, 'mcp', 'id', 'name', 'description', 'tags')
 total += preRender(learning, 'learning', 'id', 'title', 'description', 'tags')
 
 console.log('✅ 预渲染页面完成: ' + total + ' 个页面')
+
+// ============================================================
+// 3. 预渲染列表页（生成静态 HTML，让百度能抓取内容）
+// ============================================================
+function preRenderList(listPages) {
+  var count = 0
+  listPages.forEach(function(page) {
+    var pagePath = page.path
+    var title = escapeHtml(page.title + ' - YiGo-Ai导航')
+    var desc = escapeHtml(page.description)
+    var keywords = page.keywords
+    var items = page.items || []
+    var pageUrl = baseUrl + pagePath
+
+    // 生成列表内容 HTML
+    var listHtml = ''
+    items.forEach(function(item) {
+      var name = escapeHtml(item.name || item.title || '')
+      var d = escapeHtml(stripTags((item.description || item.desc || '')).substring(0, 150))
+      listHtml += '<div style="margin-bottom:12px;padding:10px;border:1px solid #eee;border-radius:6px">'
+        + '<a href="' + baseUrl + '/' + page.type + '/' + item.id + '" style="font-size:15px;font-weight:600;color:#1677ff;text-decoration:none">' + name + '</a>'
+        + '<p style="font-size:13px;color:#666;margin:4px 0 0">' + d + '</p></div>\n'
+    })
+
+    var metaHtml = '<meta name="keywords" content="' + keywords + '" />\n'
+      + '<meta property="og:title" content="' + title + '" />\n'
+      + '<meta property="og:description" content="' + desc + '" />\n'
+      + '<meta property="og:url" content="' + pageUrl + '" />\n'
+      + '<meta property="og:type" content="website" />\n'
+      + '<meta property="og:site_name" content="YiGo-Ai导航" />\n'
+      + '<meta name="twitter:card" content="summary_large_image" />\n'
+      + '<meta name="twitter:title" content="' + title + '" />\n'
+      + '<meta name="twitter:description" content="' + desc + '" />\n'
+      + '<link rel="canonical" href="' + pageUrl + '" />\n'
+
+    var html = spaHtml
+      .replace(/<title>[^<]*<\/title>/, '<title>' + title + '</title>')
+      .replace(/<meta name="description"[^>]*>/, '<meta name="description" content="' + desc + '" />')
+      .replace(/<meta name="keywords"[^>]*>/, '')
+      .replace('</head>', metaHtml + '</head>')
+      .replace('</body>', '<div style="max-width:1200px;margin:0 auto;padding:20px;font-family:sans-serif">'
+        + '<h1 style="font-size:24px;font-weight:700">' + page.title + '</h1>'
+        + '<p style="font-size:14px;color:#666">' + page.description + '</p>'
+        + '<div style="margin-top:16px">' + listHtml + '</div>'
+        + '<p style="font-size:12px;color:#999;text-align:center;margin-top:20px">共 ' + page.totalCount + ' 条，此为部分内容，完整页面需 JavaScript 加载</p>'
+        + '</div>\n</body>')
+
+    var filePath = path.join(distDir, pagePath.replace(/^\//, ''), 'index.html')
+    var dir = path.dirname(filePath)
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
+    fs.writeFileSync(filePath, html, 'utf-8')
+    count++
+  })
+  return count
+}
+
+var listPages = [
+  { path: '/skills', title: 'Skills 合集', description: '发现全球 Agent Skills，释放 AI 执行潜力', type: 'skills', keywords: 'Skills,Agent Skill,AI Skill,Claude Skill,AI编程技能,AI导航', totalCount: skills.length, items: skills.slice(0, 40) },
+  { path: '/prompts', title: 'AI提示词', description: '一句好提示，搞定AI - 精选 AI 提示词模板', type: 'prompts', keywords: 'AI提示词,Prompt模板,AI提示词工程,ChatGPT提示词,AI导航', totalCount: prompts.length, items: prompts.slice(0, 40) },
+  { path: '/news', title: 'AI资讯', description: '精选 AI 行业最新动态和资讯', type: 'news', keywords: 'AI资讯,人工智能新闻,AI行业动态,AI最新消息,AI导航', totalCount: news.length, items: news.slice(0, 40) },
+  { path: '/mcp', title: 'MCP 服务器', description: '发现全球好用的 MCP 服务器，重塑你的 AI 工作流', type: 'mcp', keywords: 'MCP服务器,MCP协议,AI工具集成,Model Context Protocol,AI导航', totalCount: mcp.length, items: mcp.slice(0, 40) },
+  { path: '/learning', title: 'AI学习资源', description: 'AI 知识百科，深入浅出学习人工智能', type: 'learning', keywords: 'AI学习,人工智能知识,机器学习教程,深度学习入门,AI导航', totalCount: learning.length, items: learning.slice(0, 40) },
+]
+
+var listCount = preRenderList(listPages)
+console.log('✅ 列表页预渲染完成: ' + listCount + ' 个页面')
+console.log('📊 总计: ' + (total + listCount) + ' 个静态页面')
